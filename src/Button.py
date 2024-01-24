@@ -19,7 +19,7 @@ class Button:
         elif gui_status == "booking_sum":
             return self.__buttons_for_booking_summary()
         else:
-            return sys.exit(-1)
+            sys.exit(-1)
 
     def __buttons_for_main_menu(self):
         buttons = []

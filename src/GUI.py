@@ -13,9 +13,16 @@ class GUI:
         self.window.title("Kinobuchungsprogramm")
         self.window.mainloop()
 
-    def update_gui(self, gui_status):
+    def update_gui(self, p_gui_status):
         # TODO hier müssen die fertigen Buttons, Labels etc. ankommen
         pass
 
     def get_gui_status(self):
         return self.gui_status
+
+    def get_window(self):
+        return self.window
+
+    def set_gui_status(self, p_gui_status):
+        self.gui_status = p_gui_status
+        return

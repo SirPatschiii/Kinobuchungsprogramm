@@ -1,9 +1,11 @@
 import sys
+import tkinter as tk
 
 
 class Button:
-    def __init__(self):
+    def __init__(self, p_window):
         print("Button works!")
+        self.window = p_window
 
     def get_buttons(self, gui_status):
         if gui_status == "main":
@@ -24,6 +26,10 @@ class Button:
     def __buttons_for_main_menu(self):
         buttons = []
         # TODO Buttons erstellen für Hauptmenü
+        b_cinema = tk.Button(self.window, text="Cinema", command=None, width=100, height=50, background="red")
+
+        buttons.append(b_cinema)
+
         return buttons
 
     def __buttons_for_cinema_menu(self):

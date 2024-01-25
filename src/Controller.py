@@ -14,7 +14,7 @@ class Controller:
     def __init__(self):
         print("Controller works!")
         self.g_GUI = GUI()
-        self.g_Button = Button()
+        self.g_Button = Button(self.g_GUI.get_window())
         self.g_Entry = Entry()
         self.g_Label = Label()
         self.g_Spinbox = Spinbox()

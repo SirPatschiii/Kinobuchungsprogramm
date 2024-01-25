@@ -15,3 +15,5 @@ class Controller:
         self.g_Label = Label()
         self.g_Spinbox = Spinbox()
         self.g_Radiobox = Radiobox()
+
+        self.g_GUI.create_gui()

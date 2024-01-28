@@ -52,5 +52,14 @@ class Controller:
         self.g_Cinema.connect_db()
         return self.g_Cinema.title()
 
+    def movie_titles(self):
+        movieIDs = ['1', '2', '3']
+        titles = []
+        self.g_Movie.connect_db()
+        for movieID in movieIDs:
+            title = self.g_Movie.title(movieID)
+            titles.append(title)
+        return titles
+
     def exit(self):
         sys.exit(1)

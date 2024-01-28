@@ -3,18 +3,16 @@ import sqlite3
 
 class Movie:
     def __init__(self):
+        self.cursor_db = None
         print("Movie works!")
 
-    @staticmethod
-    def connect_db():
+    def connect_db(self):
         connect = sqlite3.connect("cinemadata.db")
-        cursor_db = connect.cursor()
-
-    @staticmethod
-    def test_connect(cursor_db):
-        cursor_db.execute("SELECT * FROM movie")
-        user_data = cursor_db.fetchall()
-        print(user_data)
+        self.cursor_db = connect.cursor()
 
 
+    def title(self, movieID):
+        self.cursor_db.execute(f"SELECT name FROM movie WHERE movieID='{movieID}'")
+        movie = self.cursor_db.fetchone()
+        return movie[0] if movie else None
 

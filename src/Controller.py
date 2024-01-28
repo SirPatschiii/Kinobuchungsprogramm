@@ -26,6 +26,10 @@ class Controller:
         self.g_GUI.set_gui_status("movie")
         self.g_GUI.update_gui()
 
+    def change_movie_event(self):
+        self.g_GUI.set_gui_status("event")
+        self.g_GUI.update_gui()
+
     def back(self):
         match self.g_GUI.get_gui_status():
             case "main":

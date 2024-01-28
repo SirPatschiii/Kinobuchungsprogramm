@@ -57,9 +57,9 @@ class GUI:
         global btn_exit
         global btn_back
 
-        btn_main_cinema = tk.Button(self.window, text="Kino", command=self.controller.change_gui_cinema, width=10,
-                                    height=2)
-        btn_main_cinema.place(x=450, y=325)
+        btn_main_cinema = tk.Button(self.window, text="Kinoauswahl", command=self.controller.change_gui_cinema,
+                                    width=40, height=10)
+        btn_main_cinema.place(x=340, y=260)
         btn_exit = tk.Button(self.window, text="Beenden", command=self.controller.exit, width=10, height=2)
         btn_exit.place(x=900, y=640)
         btn_back = tk.Button(self.window, text="Zurück", command=self.controller.back, width=10, height=2)
@@ -116,15 +116,34 @@ class GUI:
         global btn_movie_mov2
         global btn_movie_mov3
 
-        btn_movie_mov1 = tk.Button(self.window, text="Film 1", command=self.controller.exit, width=60, height=5)
+        btn_movie_mov1 = tk.Button(self.window, text="Film 1", command=self.controller.change_movie_event, width=60,
+                                   height=5)
         btn_movie_mov1.place(x=150, y=70)
-        btn_movie_mov2 = tk.Button(self.window, text="Film 2", command=self.controller.exit, width=60, height=5)
+        btn_movie_mov2 = tk.Button(self.window, text="Film 2", command=self.controller.change_movie_event, width=60,
+                                   height=5)
         btn_movie_mov2.place(x=150, y=290)
-        btn_movie_mov3 = tk.Button(self.window, text="Film 3", command=self.controller.exit, width=60, height=5)
+        btn_movie_mov3 = tk.Button(self.window, text="Film 3", command=self.controller.change_movie_event, width=60,
+                                   height=5)
         btn_movie_mov3.place(x=150, y=520)
 
     def __update_gui_event_menu(self):
-        pass
+        global lbl_movie_lab1
+        global lbl_movie_lab2
+        global lbl_movie_lab3
+        global btn_movie_mov1
+        global btn_movie_mov2
+        global btn_movie_mov3
+
+        try:
+            lbl_movie_lab1.destroy()
+            lbl_movie_lab2.destroy()
+            lbl_movie_lab3.destroy()
+            btn_movie_mov1.destroy()
+            btn_movie_mov2.destroy()
+            btn_movie_mov3.destroy()
+        except Exception as e:
+            # Ignore exception
+            pass
 
     def __update_gui_booking_menu(self):
         pass

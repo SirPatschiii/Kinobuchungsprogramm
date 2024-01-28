@@ -48,5 +48,9 @@ class Controller:
                 self.g_GUI.set_gui_status("event")
                 self.g_GUI.update_gui()
 
+    def cinema_title(self):
+        self.g_Cinema.connect_db()
+        return self.g_Cinema.title()
+
     def exit(self):
         sys.exit(1)

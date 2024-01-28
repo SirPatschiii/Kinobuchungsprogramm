@@ -88,7 +88,7 @@ class GUI:
 
         global btn_cinema_cinema1
 
-        btn_cinema_cinema1 = tk.Button(self.window, text="Beispiel Kino 1", command=self.controller.change_cinema_movie,
+        btn_cinema_cinema1 = tk.Button(self.window, text=self.controller.cinema_title(), command=self.controller.change_cinema_movie,
                                        width=40, height=10)
         btn_cinema_cinema1.place(x=340, y=260)
 

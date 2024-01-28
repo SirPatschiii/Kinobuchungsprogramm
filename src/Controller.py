@@ -34,6 +34,15 @@ class Controller:
             case "cinema":
                 self.g_GUI.set_gui_status("main")
                 self.g_GUI.update_gui()
+            case "movie":
+                self.g_GUI.set_gui_status("cinema")
+                self.g_GUI.update_gui()
+            case "event":
+                self.g_GUI.set_gui_status("movie")
+                self.g_GUI.update_gui()
+            case "booking":
+                self.g_GUI.set_gui_status("event")
+                self.g_GUI.update_gui()
 
     def exit(self):
         sys.exit(1)

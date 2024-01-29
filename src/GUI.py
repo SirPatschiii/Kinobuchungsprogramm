@@ -105,7 +105,6 @@ class GUI:
         global lbl_movie_lab2
         global lbl_movie_lab3
 
-
         lbl_movie_lab1 = tk.Label(self.window, text="1", font=("Arial", 20), width=10, height=10, padx=0, pady=0)
         lbl_movie_lab1.place(x=0, y=-50)
         lbl_movie_lab2 = tk.Label(self.window, text="2", font=("Arial", 20), width=10, height=10, padx=0, pady=0)

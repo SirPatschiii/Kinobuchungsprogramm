@@ -7,7 +7,7 @@ class Cinema:
         print("Cinema Works!")
 
     def connect_db(self):
-        connect = sqlite3.connect("cinemadata.db")
+        connect = sqlite3.connect("src/cinemadata.db")
         self.cursor_db = connect.cursor()
 
     def title(self):

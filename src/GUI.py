@@ -170,14 +170,14 @@ class GUI:
         global radio_var
 
         self.radio_var = tk.StringVar(value="Option 1")
-
+        event_select = self.controller.show_events()
         lbl_event_lab1 = tk.Label(self.window, text="Filmtitel", font=("Arial", 14), width=10, height=2)
         lbl_event_lab1.place(x=80, y=80)
-        rad_event_rad1 = tk.Radiobutton(self.window, text="Radiobutton 1", variable=self.radio_var,
+        rad_event_rad1 = tk.Radiobutton(self.window, text=event_select[0], variable=self.radio_var,
                                         value="Option 1")
-        rad_event_rad2 = tk.Radiobutton(self.window, text="Radiobutton 2", variable=self.radio_var,
+        rad_event_rad2 = tk.Radiobutton(self.window, text=event_select[1], variable=self.radio_var,
                                         value="option 2")
-        rad_event_rad3 = tk.Radiobutton(self.window, text="Radiobutton 3", variable=self.radio_var,
+        rad_event_rad3 = tk.Radiobutton(self.window, text=event_select[2], variable=self.radio_var,
                                         value="Option 3")
         rad_event_rad1.select()
         rad_event_rad1.place(x=300, y=100)

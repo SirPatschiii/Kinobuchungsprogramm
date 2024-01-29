@@ -65,5 +65,14 @@ class Controller:
             titles.append(title)
         return titles
 
+    def show_events(self):
+        eventIDs = ['1', '2', '3']
+        event_list = []
+        self.g_Event.connect_db()
+        for eventID in eventIDs:
+            events= self.g_Event.title(eventID)
+            event_list.append(events)
+        return event_list
+
     def exit(self):
         sys.exit(1)

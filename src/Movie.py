@@ -7,7 +7,7 @@ class Movie:
         print("Movie works!")
 
     def connect_db(self):
-        connect = sqlite3.connect("src/cinemadata.db")
+        connect = sqlite3.connect("../src/cinemadata.db")
         self.cursor_db = connect.cursor()
 
 

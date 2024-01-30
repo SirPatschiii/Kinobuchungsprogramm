@@ -18,8 +18,7 @@ class Movie:
             pass
         self.cursor_db = connect.cursor()
 
-
-    def title(self, movieID):
-        self.cursor_db.execute(f"SELECT name FROM movie WHERE movieID='{movieID}'")
+    def title(self, movie_id):
+        self.cursor_db.execute(f"SELECT name FROM movie WHERE movieID='{movie_id}'")
         movie = self.cursor_db.fetchone()
         return movie[0] if movie else None

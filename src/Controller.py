@@ -27,10 +27,9 @@ class Controller:
         self.g_GUI.update_gui()
 
     def change_movie_event(self, movie_title_lbl):
-        self.g_GUI.set_event_lbl1_var(movie_title_lbl)
+        self.g_GUI.set_event_lab1_var(movie_title_lbl)
         self.g_GUI.set_gui_status("event")
         self.g_GUI.update_gui()
-
 
     def change_event_booking(self):
         self.g_GUI.set_gui_status("booking")
@@ -59,21 +58,20 @@ class Controller:
         return self.g_Cinema.title()
 
     def movie_titles(self):
-        movieIDs = ['1', '2', '3']
+        movie_ids = ['1', '2', '3']
         titles = []
         self.g_Movie.connect_db()
-        for movieID in movieIDs:
+        for movieID in movie_ids:
             title = self.g_Movie.title(movieID)
             titles.append(title)
         return titles
 
-
     def show_events(self):
-        eventIDs = ['1', '2', '3']
+        event_ids = ['1', '2', '3']
         event_list = []
         self.g_Event.connect_db()
-        for eventID in eventIDs:
-            events= self.g_Event.title(eventID)
+        for eventID in event_ids:
+            events = self.g_Event.title(eventID)
             event_list.append(events)
         return event_list
 

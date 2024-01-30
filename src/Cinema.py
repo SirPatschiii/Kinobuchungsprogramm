@@ -3,7 +3,7 @@ import sqlite3
 
 class Cinema:
     def __init__(self):
-        self.cursor_db=None
+        self.cursor_db = None
         print("Cinema Works!")
 
     def connect_db(self):
@@ -22,5 +22,3 @@ class Cinema:
         self.cursor_db.execute("SELECT name FROM cinema WHERE hallID='1'")
         user_data = self.cursor_db.fetchall()
         return user_data
-
-

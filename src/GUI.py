@@ -1,5 +1,6 @@
 import sys
 import tkinter as tk
+import tkinter.constants
 
 global btn_exit
 global btn_back
@@ -14,6 +15,15 @@ global lbl_movie_lab3
 global btn_movie_mov1
 global btn_movie_mov2
 global btn_movie_mov3
+global txt_movie_tx1
+global txt_movie_tx2
+global txt_movie_tx3
+global scb_movie_sb1
+global scb_movie_sb2
+global scb_movie_sb3
+global fra_movie_fr1
+global fra_movie_fr2
+global fra_movie_fr3
 
 global lbl_event_lab1
 global rad_event_rad1
@@ -81,6 +91,15 @@ class GUI:
         global btn_movie_mov1
         global btn_movie_mov2
         global btn_movie_mov3
+        global txt_movie_tx1
+        global txt_movie_tx2
+        global txt_movie_tx3
+        global scb_movie_sb1
+        global scb_movie_sb2
+        global scb_movie_sb3
+        global fra_movie_fr1
+        global fra_movie_fr2
+        global fra_movie_fr3
 
         try:
             btn_main_cinema.destroy()
@@ -90,6 +109,15 @@ class GUI:
             btn_movie_mov1.destroy()
             btn_movie_mov2.destroy()
             btn_movie_mov3.destroy()
+            txt_movie_tx1.destroy()
+            txt_movie_tx2.destroy()
+            txt_movie_tx3.destroy()
+            scb_movie_sb1.destroy()
+            scb_movie_sb2.destroy()
+            scb_movie_sb3.destroy()
+            fra_movie_fr1.destroy()
+            fra_movie_fr2.destroy()
+            fra_movie_fr3.destroy()
         except Exception:
             # Ignore exception
             pass
@@ -133,22 +161,69 @@ class GUI:
         global btn_movie_mov1
         global btn_movie_mov2
         global btn_movie_mov3
+
         movie_titles = self.controller.movie_titles()
         btn_movie_mov1 = tk.Button(self.window, text=movie_titles[0],
                                    command=lambda movie_title_lbl=movie_titles[0]: self.controller.change_movie_event(
                                        movie_title_lbl),
-                                   width=60, height=5)
+                                   width=50, height=5)
         btn_movie_mov1.place(x=150, y=70)
         btn_movie_mov2 = tk.Button(self.window, text=movie_titles[1],
                                    command=lambda movie_title_lbl=movie_titles[1]: self.controller.change_movie_event(
                                        movie_title_lbl),
-                                   width=60, height=5)
+                                   width=50, height=5)
         btn_movie_mov2.place(x=150, y=290)
         btn_movie_mov3 = tk.Button(self.window, text=movie_titles[2],
                                    command=lambda movie_title_lbl=movie_titles[2]: self.controller.change_movie_event(
                                        movie_title_lbl),
-                                   width=60, height=5)
+                                   width=50, height=5)
         btn_movie_mov3.place(x=150, y=520)
+
+        global txt_movie_tx1
+        global txt_movie_tx2
+        global txt_movie_tx3
+        global scb_movie_sb1
+        global scb_movie_sb2
+        global scb_movie_sb3
+        global fra_movie_fr1
+        global fra_movie_fr2
+        global fra_movie_fr3
+
+        fra_movie_fr1 = tk.Frame(self.window, width=55, height=5)
+        fra_movie_fr1.place(x=550, y=70)
+        txt_movie_tx1 = tk.Text(fra_movie_fr1, width=50, height=5)
+        scb_movie_sb1 = tk.Scrollbar(fra_movie_fr1)
+        txt_movie_tx1.pack(side=tkinter.constants.LEFT, fill=tkinter.constants.Y)
+        scb_movie_sb1.pack(side=tkinter.constants.RIGHT, fill=tkinter.constants.Y)
+        scb_movie_sb1.config(command=txt_movie_tx1.yview)
+        txt_movie_tx1.config(yscrollcommand=scb_movie_sb1.set, state=tk.DISABLED)
+        txt_movie_tx1.insert(tkinter.END, " ")
+        # TODO hier muss anstelle der " " noch der Text übergeben werden. Das kann auch über eine Variable geschehen.
+        txt_movie_tx1.config(state=tk.DISABLED)
+
+        fra_movie_fr2 = tk.Frame(self.window, width=55, height=5)
+        fra_movie_fr2.place(x=550, y=290)
+        txt_movie_tx2 = tk.Text(fra_movie_fr2, width=50, height=5)
+        scb_movie_sb2 = tk.Scrollbar(fra_movie_fr2)
+        txt_movie_tx2.pack(side=tkinter.constants.LEFT, fill=tkinter.constants.Y)
+        scb_movie_sb2.pack(side=tkinter.constants.RIGHT, fill=tkinter.constants.Y)
+        scb_movie_sb2.config(command=txt_movie_tx2.yview)
+        txt_movie_tx2.config(yscrollcommand=scb_movie_sb2.set, state=tk.DISABLED)
+        txt_movie_tx2.insert(tkinter.END, " ")
+        # TODO hier muss anstelle der " " noch der Text übergeben werden. Das kann auch über eine Variable geschehen.
+        txt_movie_tx2.config(state=tk.DISABLED)
+
+        fra_movie_fr3 = tk.Frame(self.window, width=55, height=5)
+        fra_movie_fr3.place(x=550, y=520)
+        txt_movie_tx3 = tk.Text(fra_movie_fr3, width=50, height=5)
+        scb_movie_sb3 = tk.Scrollbar(fra_movie_fr3)
+        txt_movie_tx3.pack(side=tkinter.constants.LEFT, fill=tk.constants.Y)
+        scb_movie_sb3.pack(side=tkinter.constants.LEFT, fill=tk.constants.Y)
+        scb_movie_sb3.config(command=txt_movie_tx3.yview)
+        txt_movie_tx3.config(yscrollcommand=scb_movie_sb3.set)
+        txt_movie_tx3.insert(tkinter.END, " ")
+        # TODO hier muss anstelle der " " noch der Text übergeben werden. Das kann auch über eine Variable geschehen.
+        txt_movie_tx3.config(state=tk.DISABLED)
 
     def __update_gui_event_menu(self):
         global lbl_movie_lab1
@@ -157,6 +232,15 @@ class GUI:
         global btn_movie_mov1
         global btn_movie_mov2
         global btn_movie_mov3
+        global txt_movie_tx1
+        global txt_movie_tx2
+        global txt_movie_tx3
+        global scb_movie_sb1
+        global scb_movie_sb2
+        global scb_movie_sb3
+        global fra_movie_fr1
+        global fra_movie_fr2
+        global fra_movie_fr3
 
         try:
             lbl_movie_lab1.destroy()
@@ -165,6 +249,15 @@ class GUI:
             btn_movie_mov1.destroy()
             btn_movie_mov2.destroy()
             btn_movie_mov3.destroy()
+            txt_movie_tx1.destroy()
+            txt_movie_tx2.destroy()
+            txt_movie_tx3.destroy()
+            scb_movie_sb1.destroy()
+            scb_movie_sb2.destroy()
+            scb_movie_sb3.destroy()
+            fra_movie_fr1.destroy()
+            fra_movie_fr2.destroy()
+            fra_movie_fr3.destroy()
         except Exception:
             # Ignore exception
             pass
@@ -201,6 +294,7 @@ class GUI:
         global rad_event_rad2
         global rad_event_rad3
         global btn_event_btn1
+
         try:
             lbl_event_lab1.destroy()
             rad_event_rad1.destroy()

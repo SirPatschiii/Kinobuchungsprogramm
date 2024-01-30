@@ -269,18 +269,18 @@ class GUI:
 
         self.radio_var = tk.StringVar(value="Option 1")
         event_select = self.controller.show_events()
-        lbl_event_lab1 = tk.Label(self.window, text=event_lab1_var, font=("Arial", 14), width=10, height=2)
+        lbl_event_lab1 = tk.Label(self.window, text=event_lab1_var, font=("Arial", 14), width=50, height=2, anchor="w")
         lbl_event_lab1.place(x=80, y=80)
         rad_event_rad1 = tk.Radiobutton(self.window, text=event_select[0], variable=self.radio_var,
-                                        value="Option 1")
+                                        value="Option 1", font=("Arial", 12))
         rad_event_rad2 = tk.Radiobutton(self.window, text=event_select[1], variable=self.radio_var,
-                                        value="option 2")
+                                        value="option 2", font=("Arial", 12))
         rad_event_rad3 = tk.Radiobutton(self.window, text=event_select[2], variable=self.radio_var,
-                                        value="Option 3")
+                                        value="Option 3", font=("Arial", 12))
         rad_event_rad1.select()
-        rad_event_rad1.place(x=300, y=100)
-        rad_event_rad2.place(x=300, y=150)
-        rad_event_rad3.place(x=300, y=200)
+        rad_event_rad1.place(x=150, y=150)
+        rad_event_rad2.place(x=150, y=200)
+        rad_event_rad3.place(x=150, y=250)
         btn_event_btn1 = tk.Button(self.window, text="Weiter", command=self.controller.change_event_booking, width=10,
                                    height=2)
         btn_event_btn1.place(x=700, y=640)

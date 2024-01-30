@@ -26,9 +26,12 @@ class Controller:
         self.g_GUI.set_gui_status("movie")
         self.g_GUI.update_gui()
 
-    def change_movie_event(self):
+    def change_movie_event(self, movie_title_lbl):
+        print(f"Selected Movie: {movie_title_lbl}")
+        self.g_GUI.set_event_lbl1_var(movie_title_lbl)
         self.g_GUI.set_gui_status("event")
         self.g_GUI.update_gui()
+
 
     def change_event_booking(self):
         self.g_GUI.set_gui_status("booking")
@@ -64,6 +67,7 @@ class Controller:
             title = self.g_Movie.title(movieID)
             titles.append(title)
         return titles
+
 
     def show_events(self):
         eventIDs = ['1', '2', '3']

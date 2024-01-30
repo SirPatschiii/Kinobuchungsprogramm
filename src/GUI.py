@@ -21,6 +21,7 @@ global rad_event_rad2
 global rad_event_rad3
 global btn_event_btn1
 global radio_var
+global event_lbl1_var
 
 
 class GUI:
@@ -133,13 +134,19 @@ class GUI:
         global btn_movie_mov2
         global btn_movie_mov3
         movie_titles = self.controller.movie_titles()
-        btn_movie_mov1 = tk.Button(self.window, text=movie_titles[0], command=self.controller.change_movie_event,
+        btn_movie_mov1 = tk.Button(self.window, text=movie_titles[0],
+                                   command=lambda movie_title_lbl=movie_titles[0]: self.controller.change_movie_event(
+                                       movie_title_lbl),
                                    width=60, height=5)
         btn_movie_mov1.place(x=150, y=70)
-        btn_movie_mov2 = tk.Button(self.window, text=movie_titles[1], command=self.controller.change_movie_event,
+        btn_movie_mov2 = tk.Button(self.window, text=movie_titles[1],
+                                   command=lambda movie_title_lbl=movie_titles[1]: self.controller.change_movie_event(
+                                       movie_title_lbl),
                                    width=60, height=5)
         btn_movie_mov2.place(x=150, y=290)
-        btn_movie_mov3 = tk.Button(self.window, text=movie_titles[2], command=self.controller.change_movie_event,
+        btn_movie_mov3 = tk.Button(self.window, text=movie_titles[2],
+                                   command=lambda movie_title_lbl=movie_titles[2]: self.controller.change_movie_event(
+                                       movie_title_lbl),
                                    width=60, height=5)
         btn_movie_mov3.place(x=150, y=520)
 
@@ -168,10 +175,11 @@ class GUI:
         global rad_event_rad3
         global btn_event_btn1
         global radio_var
+        global event_lbl1_var
 
         self.radio_var = tk.StringVar(value="Option 1")
         event_select = self.controller.show_events()
-        lbl_event_lab1 = tk.Label(self.window, text="Filmtitel", font=("Arial", 14), width=10, height=2)
+        lbl_event_lab1 = tk.Label(self.window, text=event_lbl1_var, font=("Arial", 14), width=10, height=2)
         lbl_event_lab1.place(x=80, y=80)
         rad_event_rad1 = tk.Radiobutton(self.window, text=event_select[0], variable=self.radio_var,
                                         value="Option 1")
@@ -212,3 +220,7 @@ class GUI:
     def set_gui_status(self, p_gui_status):
         self.gui_status = p_gui_status
         return
+
+    def set_event_lbl1_var(self, p_event_lbl1_var):
+        global event_lbl1_var
+        event_lbl1_var = p_event_lbl1_var

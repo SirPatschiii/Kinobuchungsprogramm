@@ -23,4 +23,3 @@ class Movie:
         self.cursor_db.execute(f"SELECT name FROM movie WHERE movieID='{movieID}'")
         movie = self.cursor_db.fetchone()
         return movie[0] if movie else None
-

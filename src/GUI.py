@@ -193,7 +193,7 @@ class GUI:
         txt_movie_tx1.pack(side=tkinter.constants.LEFT, fill=tkinter.constants.Y)
         scb_movie_sb1.pack(side=tkinter.constants.RIGHT, fill=tkinter.constants.Y)
         scb_movie_sb1.config(command=txt_movie_tx1.yview)
-        txt_movie_tx1.config(yscrollcommand=scb_movie_sb1.set, state=tk.DISABLED)
+        txt_movie_tx1.config(yscrollcommand=scb_movie_sb1.set)
         txt_movie_tx1.insert(tkinter.END, "Test 1")
         # !! Vorsicht hier ist noch ein Bug drin, die Ausgabe des Textes erscheint nur in Textbox 3 !! Ich kümmer mich
         # TODO hier muss anstelle der " " noch der Text übergeben werden. Das kann auch über eine Variable geschehen.
@@ -206,7 +206,7 @@ class GUI:
         txt_movie_tx2.pack(side=tkinter.constants.LEFT, fill=tkinter.constants.Y)
         scb_movie_sb2.pack(side=tkinter.constants.RIGHT, fill=tkinter.constants.Y)
         scb_movie_sb2.config(command=txt_movie_tx2.yview)
-        txt_movie_tx2.config(yscrollcommand=scb_movie_sb2.set, state=tk.DISABLED)
+        txt_movie_tx2.config(yscrollcommand=scb_movie_sb2.set)
         txt_movie_tx2.insert(tkinter.END, "Test 2")
         # !! Vorsicht hier ist noch ein Bug drin, die Ausgabe des Textes erscheint nur in Textbox 3 !! Ich kümmer mich
         # TODO hier muss anstelle der " " noch der Text übergeben werden. Das kann auch über eine Variable geschehen.

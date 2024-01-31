@@ -185,7 +185,9 @@ class GUI:
         global fra_movie_fr1
         global fra_movie_fr2
         global fra_movie_fr3
+
         movie_descriptions = self.controller.show_movie_description()
+
         fra_movie_fr1 = tk.Frame(self.window, width=55, height=5)
         fra_movie_fr1.place(x=550, y=70)
         txt_movie_tx1 = tk.Text(fra_movie_fr1, width=50, height=5)
@@ -195,8 +197,6 @@ class GUI:
         scb_movie_sb1.config(command=txt_movie_tx1.yview)
         txt_movie_tx1.config(yscrollcommand=scb_movie_sb1.set)
         txt_movie_tx1.insert(tkinter.END, movie_descriptions[0])
-        # !! Vorsicht hier ist noch ein Bug drin, die Ausgabe des Textes erscheint nur in Textbox 3 !! Ich kümmer mich
-        # TODO hier muss anstelle der " " noch der Text übergeben werden. Das kann auch über eine Variable geschehen.
         txt_movie_tx1.config(state=tk.DISABLED)
 
         fra_movie_fr2 = tk.Frame(self.window, width=55, height=5)
@@ -208,8 +208,6 @@ class GUI:
         scb_movie_sb2.config(command=txt_movie_tx2.yview)
         txt_movie_tx2.config(yscrollcommand=scb_movie_sb2.set)
         txt_movie_tx2.insert(tkinter.END, movie_descriptions[1])
-        # !! Vorsicht hier ist noch ein Bug drin, die Ausgabe des Textes erscheint nur in Textbox 3 !! Ich kümmer mich
-        # TODO hier muss anstelle der " " noch der Text übergeben werden. Das kann auch über eine Variable geschehen.
         txt_movie_tx2.config(state=tk.DISABLED)
 
         fra_movie_fr3 = tk.Frame(self.window, width=55, height=5)
@@ -221,7 +219,6 @@ class GUI:
         scb_movie_sb3.config(command=txt_movie_tx3.yview)
         txt_movie_tx3.config(yscrollcommand=scb_movie_sb3.set)
         txt_movie_tx3.insert(tkinter.END, movie_descriptions[2])
-        # TODO hier muss anstelle der " " noch der Text übergeben werden. Das kann auch über eine Variable geschehen.
         txt_movie_tx3.config(state=tk.DISABLED)
 
     def __update_gui_event_menu(self):
@@ -317,3 +314,4 @@ class GUI:
     def set_event_lab1_var(self, p_event_lbl1_var):
         global event_lab1_var
         event_lab1_var = p_event_lbl1_var
+        return

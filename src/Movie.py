@@ -22,3 +22,8 @@ class Movie:
         self.cursor_db.execute(f"SELECT name FROM movie WHERE movieID='{movie_id}'")
         movie = self.cursor_db.fetchone()
         return movie[0] if movie else None
+
+    def movie_description(self, movie_id):
+        self.cursor_db.execute(f"SELECT description FROM movie WHERE movieID='{movie_id}'")
+        movie = self.cursor_db.fetchone()
+        return movie[0] if movie else None

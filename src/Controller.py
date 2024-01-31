@@ -75,5 +75,14 @@ class Controller:
             event_list.append(events)
         return event_list
 
+    def show_movie_description(self):
+        movie_ids = ['1', '2', '3']
+        descriptions = []
+        self.g_Movie.connect_db()
+        for movieID in movie_ids:
+            description = self.g_Movie.movie_description(movieID)
+            descriptions.append(description)
+        return descriptions
+
     def exit(self):
         sys.exit(1)

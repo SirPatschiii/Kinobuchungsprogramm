@@ -63,13 +63,7 @@ class GUI:
             sys.exit(-1)
 
     def __update_gui_main_menu(self):
-        global btn_cinema_cinema1
-
-        try:
-            btn_cinema_cinema1.destroy()
-        except Exception:
-            # Ignore exception
-            pass
+        self.__clear_gui()
 
         global btn_main_cinema
         global btn_exit
@@ -84,43 +78,7 @@ class GUI:
         btn_back.place(x=800, y=640)
 
     def __update_gui_cinema_menu(self):
-        global btn_main_cinema
-        global lbl_movie_lab1
-        global lbl_movie_lab2
-        global lbl_movie_lab3
-        global btn_movie_mov1
-        global btn_movie_mov2
-        global btn_movie_mov3
-        global txt_movie_tx1
-        global txt_movie_tx2
-        global txt_movie_tx3
-        global scb_movie_sb1
-        global scb_movie_sb2
-        global scb_movie_sb3
-        global fra_movie_fr1
-        global fra_movie_fr2
-        global fra_movie_fr3
-
-        try:
-            btn_main_cinema.destroy()
-            lbl_movie_lab1.destroy()
-            lbl_movie_lab2.destroy()
-            lbl_movie_lab3.destroy()
-            btn_movie_mov1.destroy()
-            btn_movie_mov2.destroy()
-            btn_movie_mov3.destroy()
-            txt_movie_tx1.destroy()
-            txt_movie_tx2.destroy()
-            txt_movie_tx3.destroy()
-            scb_movie_sb1.destroy()
-            scb_movie_sb2.destroy()
-            scb_movie_sb3.destroy()
-            fra_movie_fr1.destroy()
-            fra_movie_fr2.destroy()
-            fra_movie_fr3.destroy()
-        except Exception:
-            # Ignore exception
-            pass
+        self.__clear_gui()
 
         global btn_cinema_cinema1
 
@@ -129,23 +87,7 @@ class GUI:
         btn_cinema_cinema1.place(x=340, y=260)
 
     def __update_gui_movie_menu(self):
-        global btn_cinema_cinema1
-        global lbl_event_lab1
-        global rad_event_rad1
-        global rad_event_rad2
-        global rad_event_rad3
-        global btn_event_btn1
-
-        try:
-            btn_cinema_cinema1.destroy()
-            lbl_event_lab1.destroy()
-            rad_event_rad1.destroy()
-            rad_event_rad2.destroy()
-            rad_event_rad3.destroy()
-            btn_event_btn1.destroy()
-        except Exception:
-            # Ignore exception
-            pass
+        self.__clear_gui()
 
         global lbl_movie_lab1
         global lbl_movie_lab2
@@ -222,41 +164,7 @@ class GUI:
         txt_movie_tx3.config(state=tk.DISABLED)
 
     def __update_gui_event_menu(self):
-        global lbl_movie_lab1
-        global lbl_movie_lab2
-        global lbl_movie_lab3
-        global btn_movie_mov1
-        global btn_movie_mov2
-        global btn_movie_mov3
-        global txt_movie_tx1
-        global txt_movie_tx2
-        global txt_movie_tx3
-        global scb_movie_sb1
-        global scb_movie_sb2
-        global scb_movie_sb3
-        global fra_movie_fr1
-        global fra_movie_fr2
-        global fra_movie_fr3
-
-        try:
-            lbl_movie_lab1.destroy()
-            lbl_movie_lab2.destroy()
-            lbl_movie_lab3.destroy()
-            btn_movie_mov1.destroy()
-            btn_movie_mov2.destroy()
-            btn_movie_mov3.destroy()
-            txt_movie_tx1.destroy()
-            txt_movie_tx2.destroy()
-            txt_movie_tx3.destroy()
-            scb_movie_sb1.destroy()
-            scb_movie_sb2.destroy()
-            scb_movie_sb3.destroy()
-            fra_movie_fr1.destroy()
-            fra_movie_fr2.destroy()
-            fra_movie_fr3.destroy()
-        except Exception:
-            # Ignore exception
-            pass
+        self.__clear_gui()
 
         global lbl_event_lab1
         global rad_event_rad1
@@ -285,6 +193,32 @@ class GUI:
         btn_event_btn1.place(x=700, y=640)
 
     def __update_gui_booking_menu(self):
+        self.__clear_gui()
+
+    def __clear_gui(self):
+        # This method destroys all elements on the current GUI to ensure only the correct widgets for the current
+        # GUI state get displayed
+
+        global btn_main_cinema
+
+        global btn_cinema_cinema1
+
+        global lbl_movie_lab1
+        global lbl_movie_lab2
+        global lbl_movie_lab3
+        global btn_movie_mov1
+        global btn_movie_mov2
+        global btn_movie_mov3
+        global txt_movie_tx1
+        global txt_movie_tx2
+        global txt_movie_tx3
+        global scb_movie_sb1
+        global scb_movie_sb2
+        global scb_movie_sb3
+        global fra_movie_fr1
+        global fra_movie_fr2
+        global fra_movie_fr3
+
         global lbl_event_lab1
         global rad_event_rad1
         global rad_event_rad2
@@ -292,13 +226,32 @@ class GUI:
         global btn_event_btn1
 
         try:
+            btn_main_cinema.destroy()
+
+            btn_cinema_cinema1.destroy()
+
+            lbl_movie_lab1.destroy()
+            lbl_movie_lab2.destroy()
+            lbl_movie_lab3.destroy()
+            btn_movie_mov1.destroy()
+            btn_movie_mov2.destroy()
+            btn_movie_mov3.destroy()
+            txt_movie_tx1.destroy()
+            txt_movie_tx2.destroy()
+            txt_movie_tx3.destroy()
+            scb_movie_sb1.destroy()
+            scb_movie_sb2.destroy()
+            scb_movie_sb3.destroy()
+            fra_movie_fr1.destroy()
+            fra_movie_fr2.destroy()
+            fra_movie_fr3.destroy()
+
             lbl_event_lab1.destroy()
             rad_event_rad1.destroy()
             rad_event_rad2.destroy()
             rad_event_rad3.destroy()
             btn_event_btn1.destroy()
-        except Exception:
-            # Ignore exception
+        except:
             pass
 
     def get_selected_radiobutton(self):

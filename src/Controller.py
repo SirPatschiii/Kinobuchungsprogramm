@@ -61,8 +61,8 @@ class Controller:
         movie_ids = ['1', '2', '3']
         titles = []
         self.g_Movie.connect_db()
-        for movieID in movie_ids:
-            title = self.g_Movie.title(movieID)
+        for movie_id in movie_ids:
+            title = self.g_Movie.title(movie_id)
             titles.append(title)
         return titles
 
@@ -70,8 +70,8 @@ class Controller:
         event_ids = ['1', '2', '3']
         event_list = []
         self.g_Event.connect_db()
-        for eventID in event_ids:
-            events = self.g_Event.title(eventID)
+        for event_id in event_ids:
+            events = self.g_Event.title(event_id)
             event_list.append(events)
         return event_list
 
@@ -79,8 +79,8 @@ class Controller:
         movie_ids = ['1', '2', '3']
         descriptions = []
         self.g_Movie.connect_db()
-        for movieID in movie_ids:
-            description = self.g_Movie.movie_description(movieID)
+        for movie_id in movie_ids:
+            description = self.g_Movie.movie_description(movie_id)
             descriptions.append(description)
         return descriptions
 

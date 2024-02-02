@@ -35,6 +35,11 @@ class Controller:
         self.g_GUI.set_gui_status("booking")
         self.g_GUI.update_gui()
 
+    def change_booking_main(self):
+        self.g_GUI.set_gui_status("main")
+        self.g_GUI.update_gui()
+        self.g_GUI.booking_pop_up()
+
     def back(self):
         match self.g_GUI.get_gui_status():
             case "main":

@@ -224,8 +224,20 @@ class GUI:
                 button.place(x=250 + (100 * j), y=240 + (80 * i))
                 btn_booking_btn_list.append(button)
 
-        btn_booking_btn1 = tk.Button(self.window, text="Weiter", command=None, width=10, height=2)
+        btn_booking_btn1 = tk.Button(self.window, text="Buchen", command=self.controller.change_booking_main,
+                                     width=10, height=2)
         btn_booking_btn1.place(x=700, y=640)
+
+    def booking_pop_up(self):
+        pop_up = tk.Tk()
+        pop_up.geometry("400x400")
+        pop_up.resizable(False, False)
+        pop_up.title("Buchungszusammenfassung")
+
+        btn_p_exit = tk.Button(pop_up, text="Exit", command=pop_up.destroy, width=10, height=2)
+        btn_p_exit.place(x=160, y=350)
+
+        pop_up.mainloop()
 
     def __clear_gui(self):
         # This method destroys all elements on the current GUI to ensure only the correct widgets for the current

@@ -92,7 +92,7 @@ class GUI:
         global btn_cinema_cinema1
 
         btn_cinema_cinema1 = tk.Button(self.__window, text=self.__o_controller.cinema_title(),
-                                       command=self.__o_controller.change_cinema_movie, width=40, height=10)
+                                       command=lambda: self.__o_controller.change_cinema_movie(self.__o_controller.cinema_title()), width=40, height=10)
         btn_cinema_cinema1.place(x=340, y=260)
 
     def __update_gui_movie_menu(self):
@@ -183,22 +183,27 @@ class GUI:
         global radio_var
         global event_lab1_var
 
-        self.__radio_var = tk.StringVar(value="Option 1")
+        event_select = self.__o_controller.show_events()
+
+        self.__radio_var = tk.StringVar(value=event_select[0])
+
         event_select = self.__o_controller.show_events()
         lbl_event_lab1 = tk.Label(self.__window, text=event_lab1_var, font=("Arial", 14), width=50, height=2, anchor="w")
         lbl_event_lab1.place(x=80, y=60)
         rad_event_rad1 = tk.Radiobutton(self.__window, text=event_select[0], variable=self.__radio_var,
-                                        value="Option 1", font=("Arial", 12))
+                                        value=event_select[0], font=("Arial", 12))
         rad_event_rad2 = tk.Radiobutton(self.__window, text=event_select[1], variable=self.__radio_var,
-                                        value="option 2", font=("Arial", 12))
+                                        value=event_select[1], font=("Arial", 12))
         rad_event_rad3 = tk.Radiobutton(self.__window, text=event_select[2], variable=self.__radio_var,
-                                        value="Option 3", font=("Arial", 12))
+                                        value=event_select[2], font=("Arial", 12))
         rad_event_rad1.select()
         rad_event_rad1.place(x=150, y=150)
         rad_event_rad2.place(x=150, y=200)
         rad_event_rad3.place(x=150, y=250)
-        btn_event_btn1 = tk.Button(self.__window, text="Weiter", command=self.__o_controller.change_event_booking, width=10,
+        event_rad_selection = self.__radio_var.get()
+        btn_event_btn1 = tk.Button(self.__window, text="Weiter", command=lambda: self.__o_controller.change_event_booking(event_rad_selection), width=10,
                                    height=2)
+        # TODO Bug: selected_event was shown after go Back on the event selection and then forward to the seat selection
         btn_event_btn1.place(x=700, y=640)
 
     def __update_gui_booking_menu(self):
@@ -210,12 +215,13 @@ class GUI:
         global btn_booking_btn_list
         global btn_booking_btn1
 
-        lbl_booking_lab1 = tk.Label(self.__window, text="Filmtitel", font=("Arial", 14), width=50, height=2, anchor="w")
+        lbl_booking_lab1 = tk.Label(self.__window, text=self.__o_controller.get_selected_movie(), font=("Arial", 14), width=50, height=2, anchor="w")
         lbl_booking_lab1.place(x=80, y=60)
-        lbl_booking_lab2 = tk.Label(self.__window, text="Kinoname", font=("Arial", 14), width=50, height=2, anchor="w")
+        lbl_booking_lab2 = tk.Label(self.__window, text=self.__o_controller.get_selected_cinema(), font=("Arial", 14), width=50, height=2, anchor="w")
         lbl_booking_lab2.place(x=80, y=110)
-        lbl_booking_lab3 = tk.Label(self.__window, text="Datum/Uhrzeit", font=("Arial", 14), width=50, height=2,
+        lbl_booking_lab3 = tk.Label(self.__window, text=self.__o_controller.get_selected_event(), font=("Arial", 14), width=50, height=2,
                                     anchor="e")
+        # TODO Bug: selected_event was shown after go Back on the event selection and then forward to the seat selection
         lbl_booking_lab3.place(x=350, y=60)
 
         for i in range(4):

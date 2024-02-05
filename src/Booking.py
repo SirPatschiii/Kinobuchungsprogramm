@@ -2,22 +2,25 @@ class Booking:
     def __init__(self):
         print("Booking works!")
 
-    def selected_cinema(self, cinema_title):
-        self.selected_cinema = cinema_title
+        self.__selected_cinema = ""
+        self.__selected_movie = ""
+        self.__selected_event = ""
+
+    def set_selected_cinema(self, cinema_title):
+        self.__selected_cinema = cinema_title
 
     def get_selected_cinema(self):
-        return self.selected_cinema
+        return self.__selected_cinema
 
-    def selected_movie(self, movie_title_lbl):
-        self.selected_movie = movie_title_lbl
+    def set_selected_movie(self, movie_title_lbl):
+        self.__selected_movie = movie_title_lbl
 
     def get_selected_movie(self):
-        return self.selected_movie
+        return self.__selected_movie
 
-    def selected_event(self, event_rad_selection):
-        self.selected_event = event_rad_selection
+    def set_selected_event(self, event_rad_selection):
+        self.__selected_event = event_rad_selection
 
     def get_selected_event(self):
-        print(self.selected_event)
-        return self.selected_event
-
+        print(self.__selected_event)
+        return self.__selected_event

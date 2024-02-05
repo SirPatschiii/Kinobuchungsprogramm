@@ -25,18 +25,18 @@ class Controller:
     def change_cinema_movie(self, cinema_title):
         self.__o_gui.set_gui_status("movie")
         self.__o_gui.update_gui()
-        self.__o_booking.selected_cinema(cinema_title)
+        self.__o_booking.set_selected_cinema(cinema_title)
 
     def change_movie_event(self, movie_title_lbl):
         self.__o_gui.set_event_lab1_var(movie_title_lbl)
         self.__o_gui.set_gui_status("event")
         self.__o_gui.update_gui()
-        self.__o_booking.selected_movie(movie_title_lbl)
+        self.__o_booking.set_selected_movie(movie_title_lbl)
 
     def change_event_booking(self, event_rad_selection):
         self.__o_gui.set_gui_status("booking")
         self.__o_gui.update_gui()
-        self.__o_booking.selected_event(event_rad_selection)
+        self.__o_booking.set_selected_event(event_rad_selection)
 
     def change_booking_main(self):
         self.__o_gui.set_gui_status("main")

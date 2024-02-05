@@ -46,6 +46,8 @@ class Controller:
         self.__o_gui.booking_pop_up()
 
     def back(self):
+        # TODO Information: We can do without resetting, because the old selection will be overwritten anyway when a
+        #  new selection is made.
         match self.__o_gui.get_gui_status():
             case "main":
                 self.__o_gui.set_gui_status("main")

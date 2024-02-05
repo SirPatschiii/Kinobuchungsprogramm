@@ -185,7 +185,9 @@ class GUI:
         self.btn_event_btn1 = tk.Button(self.__window, text="Weiter",
                                         command=lambda: self.__o_controller.change_event_booking(
                                             self.event_rad_selection), width=10, height=2)
-        # TODO Bug: selected_event was shown after go Back on the event selection and then forward to the seat selection
+        # TODO Bug: selected_event was shown after go Back on the event selection and then forward to the seat
+        #  selection.
+        #  The algorithm is ignoring the choice of the user, in booking it will always display the first event time WIP
         self.btn_event_btn1.place(x=700, y=640)
 
     def __update_gui_booking_menu(self):
@@ -199,7 +201,9 @@ class GUI:
         self.lbl_booking_lab2.place(x=80, y=110)
         self.lbl_booking_lab3 = tk.Label(self.__window, text=self.__o_controller.get_selected_event(),
                                          font=("Arial", 14), width=50, height=2, anchor="e")
-        # TODO Bug: selected_event was shown after go Back on the event selection and then forward to the seat selection
+        # TODO Bug: selected_event was shown after go Back on the event selection and then forward to the seat
+        #  selection.
+        #  The algorithm is ignoring the choice of the user, in booking it will always display the first event time WIP
         self.lbl_booking_lab3.place(x=350, y=60)
 
         for i in range(4):

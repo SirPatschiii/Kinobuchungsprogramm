@@ -8,14 +8,21 @@ class Movie:
 
     def connect_db(self):
         connect = None
+
         try:
             connect = sqlite3.connect("src/cinemadata.db")
-        except Exception:
-            pass
+        except sqlite3.OperationalError as e:
+            print(f"Error connecting to the database: {e}")
+        except sqlite3.DatabaseError as e:
+            print(f"Database error: {e}")
+
         try:
             connect = sqlite3.connect("../src/cinemadata.db")
-        except Exception:
-            pass
+        except sqlite3.OperationalError as e:
+            print(f"Error connecting to the database: {e}")
+        except sqlite3.DatabaseError as e:
+            print(f"Database error: {e}")
+
         self.cursor_db = connect.cursor()
 
     def title(self, movie_id):

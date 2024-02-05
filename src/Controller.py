@@ -1,4 +1,5 @@
 import sys
+import logging
 
 from GUI import GUI
 from Cinema import Cinema
@@ -9,12 +10,13 @@ from Booking import Booking
 
 class Controller:
     def __init__(self):
-        print("Controller works!")
         self.__o_gui = GUI(self)
         self.__o_cinema = Cinema()
         self.__o_movie = Movie()
         self.__o_event = Event()
         self.__o_booking = Booking()
+
+        logging.debug("Controller works!")
 
         self.__o_gui.create_gui()
 

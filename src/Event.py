@@ -1,29 +1,31 @@
 import sqlite3
+import logging
 
 
 class Event:
     def __init__(self):
+        logging.debug("Event works!")
+
         self.cursor_db = None
-        print("Event works!")
 
     def connect_db(self):
         connect = None
 
         try:
             connect = sqlite3.connect("src/cinemadata.db")
-            print("Connection to the database successful!")
+            logging.debug("Connection to the database successful!")
         except sqlite3.OperationalError as e:
-            print(f"Error connecting to the database: {e}")
+            logging.exception(f"Error connecting to the database: {e}")
         except sqlite3.DatabaseError as e:
-            print(f"Database error: {e}")
+            logging.exception(f"Database error: {e}")
 
         try:
             connect = sqlite3.connect("../src/cinemadata.db")
-            print("Connection to the database successful!")
+            logging.debug("Connection to the database successful!")
         except sqlite3.OperationalError as e:
-            print(f"Error connecting to the database: {e}")
+            logging.exception(f"Error connecting to the database: {e}")
         except sqlite3.DatabaseError as e:
-            print(f"Database error: {e}")
+            logging.exception(f"Database error: {e}")
 
         self.cursor_db = connect.cursor()
 

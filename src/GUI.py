@@ -1,12 +1,25 @@
 import sys
+import logging
+from pathlib import Path
+import time
 import tkinter as tk
 import tkinter.constants
 
 
 class GUI:
     def __init__(self, p_controller):
-        print("GUI works!")
         self.__o_controller = p_controller
+
+        if not logging.root.handlers:
+            __log_file = Path(__file__).resolve().parent / 'logfile.log'
+            if __log_file.exists():
+                __log_file.unlink()
+                time.sleep(0.1)
+
+            logging.basicConfig(filename=__log_file, level=logging.DEBUG)
+
+        logging.debug("GUI works!")
+
         self.__window = tk.Tk()
         self.__gui_status = "main"
 
@@ -245,14 +258,18 @@ class GUI:
             self.lbl_booking_lab2.destroy()
             self.lbl_booking_lab3.destroy()
             self.btn_booking_btn1.destroy()
-        except:
-            pass
+        except AttributeError as e:
+            logging.exception(f"AttributeError: {e}")
+        except tk.TclError as e:
+            logging.exception(f"Error while destroying widgets: {e}")
 
         for button in self.btn_booking_btn_list:
             try:
                 button.destroy()
-            except:
-                pass
+            except AttributeError as e:
+                logging.exception(f"AttributeError: {e}")
+            except tk.TclError as e:
+                logging.exception(f"Error while destroying widgets: {e}")
 
     def get_selected_radiobutton(self):
         return self.__radio_var.get()

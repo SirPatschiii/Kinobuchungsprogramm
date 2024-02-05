@@ -11,6 +11,7 @@ class Cinema:
 
         try:
             connect = sqlite3.connect("src/cinemadata.db")
+            print("Connection to the database successful!")
         except sqlite3.OperationalError as e:
             print(f"Error connecting to the database: {e}")
         except sqlite3.DatabaseError as e:
@@ -18,6 +19,7 @@ class Cinema:
 
         try:
             connect = sqlite3.connect("../src/cinemadata.db")
+            print("Connection to the database successful!")
         except sqlite3.OperationalError as e:
             print(f"Error connecting to the database: {e}")
         except sqlite3.DatabaseError as e:

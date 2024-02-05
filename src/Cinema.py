@@ -1,10 +1,10 @@
 import sqlite3
-import logging
+import logging as log
 
 
 class Cinema:
     def __init__(self):
-        logging.debug("Cinema Works!")
+        log.debug("Cinema Works!")
 
         self.cursor_db = None
 
@@ -13,19 +13,19 @@ class Cinema:
 
         try:
             connect = sqlite3.connect("src/cinemadata.db")
-            logging.debug("Connection to the database successful!")
+            log.debug("Connection to the database successful!")
         except sqlite3.OperationalError as e:
-            logging.exception(f"Error connecting to the database: {e}")
+            log.exception(f"Error connecting to the database: {e}")
         except sqlite3.DatabaseError as e:
-            logging.exception(f"Database error: {e}")
+            log.exception(f"Database error: {e}")
 
         try:
             connect = sqlite3.connect("../src/cinemadata.db")
-            logging.debug("Connection to the database successful!")
+            log.debug("Connection to the database successful!")
         except sqlite3.OperationalError as e:
-            logging.exception(f"Error connecting to the database: {e}")
+            log.exception(f"Error connecting to the database: {e}")
         except sqlite3.DatabaseError as e:
-            logging.exception(f"Database error: {e}")
+            log.exception(f"Database error: {e}")
 
         self.cursor_db = connect.cursor()
 

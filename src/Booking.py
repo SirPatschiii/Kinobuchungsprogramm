@@ -1,9 +1,9 @@
-import logging
+import logging as log
 
 
 class Booking:
     def __init__(self):
-        logging.debug("Booking works!")
+        log.debug("Booking works!")
 
         self.__selected_cinema = ""
         self.__selected_movie = ""

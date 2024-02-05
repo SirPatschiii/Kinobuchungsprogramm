@@ -1,5 +1,5 @@
 import sys
-import logging
+import logging as log
 
 from GUI import GUI
 from Cinema import Cinema
@@ -16,7 +16,7 @@ class Controller:
         self.__o_event = Event()
         self.__o_booking = Booking()
 
-        logging.debug("Controller works!")
+        log.debug("Controller works!")
 
         self.__o_gui.create_gui()
 

@@ -65,13 +65,11 @@ class Controller:
                 self.__o_gui.update_gui()
 
     def cinema_title(self):
-        self.__o_cinema.connect_db()
         return self.__o_cinema.title()
 
     def movie_titles(self):
         movie_ids = ['1', '2', '3']
         titles = []
-        self.__o_movie.connect_db()
         for movie_id in movie_ids:
             title = self.__o_movie.title(movie_id)
             titles.append(title)
@@ -80,7 +78,6 @@ class Controller:
     def show_events(self):
         event_ids = ['1', '2', '3']
         event_list = []
-        self.__o_event.connect_db()
         for event_id in event_ids:
             events = self.__o_event.title(event_id)
             event_list.append(events)
@@ -92,7 +89,6 @@ class Controller:
     def show_movie_description(self):
         movie_ids = ['1', '2', '3']
         descriptions = []
-        self.__o_movie.connect_db()
         for movie_id in movie_ids:
             description = self.__o_movie.movie_description(movie_id)
             descriptions.append(description)

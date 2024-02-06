@@ -1,5 +1,6 @@
 import logging as log
 import sqlite3
+import os
 
 
 class Booking:
@@ -13,16 +14,11 @@ class Booking:
         self.__selected_event = ""
 
     def __connect_db(self):
+        current_file_path = os.path.abspath(__file__)
+        project_root = os.path.dirname(os.path.dirname(current_file_path))
+        database_path = os.path.join(project_root, "src", "cinemadata.db")
         try:
-            self.connect = sqlite3.connect("src/cinemadata.db")
-            log.debug("Connection to the database successful!")
-        except sqlite3.OperationalError as e:
-            log.exception(f"Error connecting to the database: {e}")
-        except sqlite3.DatabaseError as e:
-            log.exception(f"Database error: {e}")
-
-        try:
-            self.connect = sqlite3.connect("../src/cinemadata.db")
+            self.connect = sqlite3.connect(database_path)
             log.debug("Connection to the database successful!")
         except sqlite3.OperationalError as e:
             log.exception(f"Error connecting to the database: {e}")

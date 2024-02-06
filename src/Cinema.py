@@ -1,5 +1,6 @@
 import sqlite3
 import logging as log
+import os
 
 
 class Cinema:
@@ -10,16 +11,11 @@ class Cinema:
         self.connect = None
 
     def __connect_db(self):
+        current_file_path = os.path.abspath(__file__)
+        project_root = os.path.dirname(os.path.dirname(current_file_path))
+        database_path = os.path.join(project_root, "src", "cinemadata.db")
         try:
-            self.connect = sqlite3.connect("src/cinemadata.db")
-            log.debug("Connection to the database successful!")
-        except sqlite3.OperationalError as e:
-            log.exception(f"Error connecting to the database: {e}")
-        except sqlite3.DatabaseError as e:
-            log.exception(f"Database error: {e}")
-
-        try:
-            self.connect = sqlite3.connect("../src/cinemadata.db")
+            self.connect = sqlite3.connect(database_path)
             log.debug("Connection to the database successful!")
         except sqlite3.OperationalError as e:
             log.exception(f"Error connecting to the database: {e}")
@@ -29,7 +25,13 @@ class Cinema:
         self.cursor_db = self.connect.cursor()
 
     def __disconnect_db(self):
-        self.connect.close()
+        try:
+            self.connect.close()
+            log.debug("Disconnect from the database was successful!")
+        except sqlite3.OperationalError as e:
+            log.exception(f"Error disconnecting to the database: {e}")
+        except sqlite3.DatabaseError as e:
+            log.exception(f"Database error: {e}")
 
     def title(self):
         self.__connect_db()

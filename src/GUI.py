@@ -163,6 +163,7 @@ class GUI:
         self.__clear_gui()
 
         self.event_select = self.__o_controller.show_events()
+        self.__o_controller.set_selected_event(self.event_select[0])
 
         self.lbl_event_lab1 = tk.Label(self.__window, text=self.event_lab1_var, font=("Arial", 14), width=50, height=2,
                                        anchor="w")

@@ -57,6 +57,7 @@ class GUI:
         self.lbl_booking_lab2 = None
         self.lbl_booking_lab3 = None
         self.btn_booking_btn_list = []
+        self.booked_seats = None
         self.btn_booking_btn1 = None
 
     def create_gui(self):
@@ -203,14 +204,22 @@ class GUI:
 
         for i in range(4):
             for j in range(5):
-                button = tk.Button(self.__window, text=(i * 5) + (j + 1), font=("Arial", 14), width=7, height=2, command=)
+                button = tk.Button(self.__window, text=(i * 5) + (j + 1), font=("Arial", 14), width=7, height=2,
+                                   command=lambda: self.__o_controller.set_seat_state(button.cget('text')))
                 button.place(x=250 + (100 * j), y=240 + (80 * i))
                 self.btn_booking_btn_list.append(button)
-        # TODO Seats implementieren
-        booked_seats = self.__o_controller.get_booked_seats()
 
+        index = 0
         for button in self.btn_booking_btn_list:
-            button.config(bg='green')
+            # TODO .config isn't working properly
+            match self.booked_seats[index]:
+                case True:
+                    button.config(bg='red')
+                    index += 1
+                case False:
+                    button.config(bg='green')
+                    index += 1
+
         self.btn_booking_btn1 = tk.Button(self.__window, text="Buchen", command=self.__o_controller.change_booking_main,
                                           width=10, height=2)
         self.btn_booking_btn1.place(x=700, y=640)
@@ -277,6 +286,9 @@ class GUI:
     def get_gui_status(self):
         return self.__gui_status
 
+    def get_booked_seats(self):
+        return self.booked_seats
+
     def set_gui_status(self, p_gui_status):
         self.__gui_status = p_gui_status
         return
@@ -284,3 +296,6 @@ class GUI:
     def set_event_lab1_var(self, p_event_lbl1_var):
         self.event_lab1_var = p_event_lbl1_var
         return
+
+    def set_booked_seats(self, p_booked_seats):
+        self.booked_seats = p_booked_seats

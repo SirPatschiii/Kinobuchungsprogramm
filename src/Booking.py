@@ -1,13 +1,38 @@
 import logging as log
+import sqlite3
 
 
 class Booking:
     def __init__(self):
         log.debug("Booking works!")
 
+        self.connect = None
+
         self.__selected_cinema = ""
         self.__selected_movie = ""
         self.__selected_event = ""
+
+    def __connect_db(self):
+        try:
+            self.connect = sqlite3.connect("src/cinemadata.db")
+            log.debug("Connection to the database successful!")
+        except sqlite3.OperationalError as e:
+            log.exception(f"Error connecting to the database: {e}")
+        except sqlite3.DatabaseError as e:
+            log.exception(f"Database error: {e}")
+
+        try:
+            self.connect = sqlite3.connect("../src/cinemadata.db")
+            log.debug("Connection to the database successful!")
+        except sqlite3.OperationalError as e:
+            log.exception(f"Error connecting to the database: {e}")
+        except sqlite3.DatabaseError as e:
+            log.exception(f"Database error: {e}")
+
+        self.cursor_db = self.connect.cursor()
+
+    def __disconnect_db(self):
+        self.connect.close()
 
     def set_selected_cinema(self, cinema_title):
         self.__selected_cinema = cinema_title
@@ -27,3 +52,6 @@ class Booking:
     def get_selected_event(self):
         print(self.__selected_event)
         return self.__selected_event
+
+    def get_selected_seats(self):
+        pass

@@ -103,5 +103,11 @@ class Controller:
     def get_selected_event(self):
         return self.__o_booking.get_selected_event()
 
+    def get_selected_seats(self):
+        pass
+
+    def get_booked_seats(self):
+        return self.__o_cinema.get_booked_seats()
+
     def exit(self):
         sys.exit(1)

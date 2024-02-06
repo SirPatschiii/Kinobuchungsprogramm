@@ -45,13 +45,17 @@ class Cinema:
         self.cursor_db.execute(f"SELECT booked_seats FROM cinema WHERE hallID='1'")
         booked_seats = self.cursor_db.fetchone()
         self.__disconnect_db()
+
         booked_seats_bool = [None for _ in range(20)]
-        i = 0
-        for character in str(booked_seats):
-            if character == "0":
-                booked_seats_bool[i] = False
-                i += 1
-            else:
-                booked_seats_bool[i] = True
-                i += 1
+        c = 0
+        for i, character in enumerate(str(booked_seats)):
+            match character:
+                case "0":
+                    booked_seats_bool[i - c] = False
+                case "1":
+                    booked_seats_bool[i - c] = True
+                case _:
+                    c += 1
+                    continue
+
         return booked_seats_bool

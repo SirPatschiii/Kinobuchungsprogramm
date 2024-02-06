@@ -203,11 +203,14 @@ class GUI:
 
         for i in range(4):
             for j in range(5):
-                button = tk.Button(self.__window, text=(i * 5) + (j + 1), font=("Arial", 14), width=7, height=2)
+                button = tk.Button(self.__window, text=(i * 5) + (j + 1), font=("Arial", 14), width=7, height=2, command=)
                 button.place(x=250 + (100 * j), y=240 + (80 * i))
                 self.btn_booking_btn_list.append(button)
         # TODO Seats implementieren
         booked_seats = self.__o_controller.get_booked_seats()
+
+        for button in self.btn_booking_btn_list:
+            button.config(bg='green')
         self.btn_booking_btn1 = tk.Button(self.__window, text="Buchen", command=self.__o_controller.change_booking_main,
                                           width=10, height=2)
         self.btn_booking_btn1.place(x=700, y=640)

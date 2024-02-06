@@ -86,6 +86,11 @@ class Controller:
     def set_selected_event(self, p_selected_event):
         self.__o_booking.set_selected_event(p_selected_event)
 
+    def set_seat_state(self):
+        seats = self.__o_cinema.get_booked_seats()
+
+
+
     def show_movie_description(self):
         movie_ids = ['1', '2', '3']
         descriptions = []
@@ -108,6 +113,7 @@ class Controller:
 
     def get_booked_seats(self):
         return self.__o_cinema.get_booked_seats()
+
 
     def exit(self):
         sys.exit(1)

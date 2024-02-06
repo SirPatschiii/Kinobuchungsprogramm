@@ -46,7 +46,7 @@ class Cinema:
         booked_seats = self.cursor_db.fetchone()
         self.__disconnect_db()
 
-        booked_seats_bool = [None for _ in range(20)]
+        booked_seats_bool = [0 for _ in range(20)]
         c = 0
         for i, character in enumerate(str(booked_seats)):
             match character:

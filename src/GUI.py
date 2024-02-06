@@ -51,7 +51,6 @@ class GUI:
         self.rad_event_rad2 = None
         self.rad_event_rad3 = None
         self.btn_event_btn1 = None
-        self.radio_var = None
         self.event_lab1_var = None
 
         self.lbl_booking_lab1 = None
@@ -165,29 +164,27 @@ class GUI:
 
         self.event_select = self.__o_controller.show_events()
 
-        self.__radio_var = tk.StringVar(value=self.event_select[0])
-
-        self.event_select = self.__o_controller.show_events()
         self.lbl_event_lab1 = tk.Label(self.__window, text=self.event_lab1_var, font=("Arial", 14), width=50, height=2,
                                        anchor="w")
         self.lbl_event_lab1.place(x=80, y=60)
-        self.rad_event_rad1 = tk.Radiobutton(self.__window, text=self.event_select[0], variable=self.__radio_var,
-                                             value=self.event_select[0], font=("Arial", 12))
-        self.rad_event_rad2 = tk.Radiobutton(self.__window, text=self.event_select[1], variable=self.__radio_var,
-                                             value=self.event_select[1], font=("Arial", 12))
-        self.rad_event_rad3 = tk.Radiobutton(self.__window, text=self.event_select[2], variable=self.__radio_var,
-                                             value=self.event_select[2], font=("Arial", 12))
+        self.rad_event_rad1 = tk.Radiobutton(self.__window, text=self.event_select[0],
+                                             value=self.event_select[0], font=("Arial", 12),
+                                             command=lambda: self.__o_controller.set_selected_event(
+                                             self.event_select[0]))
+        self.rad_event_rad2 = tk.Radiobutton(self.__window, text=self.event_select[1],
+                                             value=self.event_select[1], font=("Arial", 12),
+                                             command=lambda: self.__o_controller.set_selected_event(
+                                             self.event_select[1]))
+        self.rad_event_rad3 = tk.Radiobutton(self.__window, text=self.event_select[2],
+                                             value=self.event_select[2], font=("Arial", 12),
+                                             command=lambda: self.__o_controller.set_selected_event(
+                                             self.event_select[2]))
         self.rad_event_rad1.select()
         self.rad_event_rad1.place(x=150, y=150)
         self.rad_event_rad2.place(x=150, y=200)
         self.rad_event_rad3.place(x=150, y=250)
-        self.event_rad_selection = self.__radio_var.get()
         self.btn_event_btn1 = tk.Button(self.__window, text="Weiter",
-                                        command=lambda: self.__o_controller.change_event_booking(
-                                            self.event_rad_selection), width=10, height=2)
-        # TODO Bug: selected_event was shown after go Back on the event selection and then forward to the seat
-        #  selection.
-        #  The algorithm is ignoring the choice of the user, in booking it will always display the first event time WIP
+                                        command=self.__o_controller.change_event_booking, width=10, height=2)
         self.btn_event_btn1.place(x=700, y=640)
 
     def __update_gui_booking_menu(self):
@@ -201,9 +198,6 @@ class GUI:
         self.lbl_booking_lab2.place(x=80, y=110)
         self.lbl_booking_lab3 = tk.Label(self.__window, text=self.__o_controller.get_selected_event(),
                                          font=("Arial", 14), width=50, height=2, anchor="e")
-        # TODO Bug: selected_event was shown after go Back on the event selection and then forward to the seat
-        #  selection.
-        #  The algorithm is ignoring the choice of the user, in booking it will always display the first event time WIP
         self.lbl_booking_lab3.place(x=350, y=60)
 
         for i in range(4):
@@ -274,9 +268,6 @@ class GUI:
                 log.exception(f"AttributeError: {e}")
             except tk.TclError as e:
                 log.exception(f"Error while destroying widgets: {e}")
-
-    def get_selected_radiobutton(self):
-        return self.__radio_var.get()
 
     def get_gui_status(self):
         return self.__gui_status

@@ -5,6 +5,7 @@ import os
 
 class Booking:
     def __init__(self):
+
         log.debug("Booking works!")
 
         self.cursor_db = None
@@ -14,6 +15,7 @@ class Booking:
         self.__selected_movie = ""
         self.__selected_event = ""
         self.__booked_seats = ""
+        self.__booking_id = None
 
     def __connect_db(self):
         current_file_path = os.path.abspath(__file__)

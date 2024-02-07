@@ -112,8 +112,24 @@ class Controller:
     def get_selected_event(self):
         return self.__o_booking.get_selected_event()
 
-    def get_selected_seats(self):
-        pass
+    def get_total_seats(self):
+        return self.__o_cinema.get_total_seats()
+
+    def get_booked_seats(self):
+        return self.__o_cinema.get_booked_seats()
+
+    def book_seats(self, seat_list):
+        self.__o_booking.set_booked_seats(seat_list)
+        self.__o_booking.update_database()
+
+
+    def get_booking_data(self):
+        booking_data = self.__o_booking.update_database()
+        return booking_data
+
+    def set_booking_overview(self, booking_data):
+        if booking_data:
+            self.__o_gui.booking_pop_up()
 
     def exit(self):
         sys.exit(1)

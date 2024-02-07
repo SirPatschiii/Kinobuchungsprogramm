@@ -40,22 +40,19 @@ class Cinema:
         self.__disconnect_db()
         return user_data
 
+    def get_total_seats(self):
+        self.__connect_db()
+        self.cursor_db.execute(f"SELECT total_seats FROM cinema WHERE hallID='1'")
+        total_seats = self.cursor_db.fetchone()
+        self.__disconnect_db()
+        return total_seats
+
     def get_booked_seats(self):
         self.__connect_db()
         self.cursor_db.execute(f"SELECT booked_seats FROM cinema WHERE hallID='1'")
-        booked_seats = self.cursor_db.fetchone()
+        booked_seats_str = self.cursor_db.fetchone()[0]
         self.__disconnect_db()
 
-        booked_seats_bool = [0 for _ in range(20)]
-        c = 0
-        for i, character in enumerate(str(booked_seats)):
-            match character:
-                case "0":
-                    booked_seats_bool[i - c] = False
-                case "1":
-                    booked_seats_bool[i - c] = True
-                case _:
-                    c += 1
-                    continue
+        booked_seats = ['green' if seat == '0' else 'red' for seat in booked_seats_str]
+        return booked_seats
 
-        return booked_seats_bool

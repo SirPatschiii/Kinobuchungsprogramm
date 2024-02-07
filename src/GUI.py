@@ -59,6 +59,7 @@ class GUI:
         self.btn_booking_btn_list = []
         self.booked_seats = None
         self.btn_booking_btn1 = None
+        self.selected_seats = set()
 
     def create_gui(self):
         self.__window.geometry("1000x700")
@@ -202,33 +203,50 @@ class GUI:
                                          font=("Arial", 14), width=50, height=2, anchor="e")
         self.lbl_booking_lab3.place(x=350, y=60)
 
-        for i in range(4):
-            for j in range(5):
-                button = tk.Button(self.__window, text=(i * 5) + (j + 1), font=("Arial", 14), width=7, height=2,
-                                   command=lambda: self.__o_controller.set_seat_state(button.cget('text')))
-                button.place(x=250 + (100 * j), y=240 + (80 * i))
+        total_seats_tuple = self.__o_controller.get_total_seats()
+        total_seats = total_seats_tuple[0]
+
+        booked_seats = self.__o_controller.get_booked_seats()
+
+        rows = 5
+        cols = total_seats // rows
+
+        # Festlegen der Anfangsposition des ersten Buttons
+        start_x = 300
+        start_y = 300
+        button_width = 60
+        button_height = 40
+        padding_x = 15
+        padding_y = 15
+
+    # Erstellen Sie eine Schleife, um Buttons für jeden Sitzplatz zu erstellen und sie zu platzieren
+        for row in range(rows):
+            for col in range(cols):
+                seat_number = row * cols + col + 1
+                button_x = start_x + col * (button_width + padding_x)
+                button_y = start_y + row * (button_height + padding_y)
+                color = booked_seats[seat_number - 1]
+                button = tk.Button(self.__window, text=str(seat_number), command=lambda num=seat_number: self.set_seats_clicked(num), width=5, height=2, bg=color)
+                button.place(x=button_x, y=button_y)
                 self.btn_booking_btn_list.append(button)
 
-        index = 0
-        for button in self.btn_booking_btn_list:
-            # TODO .config isn't working properly
-            match self.booked_seats[index]:
-                case True:
-                    button.config(bg='red')
-                    index += 1
-                case False:
-                    button.config(bg='green')
-                    index += 1
-
-        self.btn_booking_btn1 = tk.Button(self.__window, text="Buchen", command=self.__o_controller.change_booking_main,
-                                          width=10, height=2)
+        self.btn_booking_btn1 = tk.Button(self.__window, text="Buchen", command=self.book_seats, width=10, height=2)
         self.btn_booking_btn1.place(x=700, y=640)
 
-    def booking_pop_up(self):
+    def booking_pop_up(self, booking_id, selected_cinema, selected_movie, selected_event):
         pop_up = tk.Tk()
         pop_up.geometry("400x400")
         pop_up.resizable(False, False)
         pop_up.title("Buchungszusammenfassung")
+
+        lbl_booking_id = tk.Label(pop_up, text=f"Buchungs-ID: {booking_id}", font=("Arial", 14), width=50, height=2, anchor="w")
+        lbl_booking_id.place(x=80, y=60)
+        lbl_selected_cinema = tk.Label(pop_up, text=f"Ausgewähltes Kino: {selected_cinema}", font=("Arial", 14), width=50, height=2, anchor="w")
+        lbl_selected_cinema.place(x=80, y=110)
+        lbl_selected_movie = tk.Label(pop_up, text=f"Ausgewählter Film: {selected_movie}", font=("Arial", 14), width=50, height=2, anchor="w")
+        lbl_selected_movie.place(x=80, y=160)
+        lbl_selected_event = tk.Label(pop_up, text=f"Ausgewähltes Event: {selected_event}", font=("Arial", 14), width=50, height=2, anchor="w")
+        lbl_selected_event.place(x=80, y=210)
 
         btn_p_exit = tk.Button(pop_up, text="Exit", command=pop_up.destroy, width=10, height=2)
         btn_p_exit.place(x=160, y=350)
@@ -297,5 +315,37 @@ class GUI:
         self.event_lab1_var = p_event_lbl1_var
         return
 
-    def set_booked_seats(self, p_booked_seats):
-        self.booked_seats = p_booked_seats
+    def set_booked_seats(self, booked_seats):
+        for button in self.btn_booking_btn_list:
+            seat_number = int(button.cget('text'))
+            color = booked_seats[seat_number - 1]  # Get color from booked seats list
+            button.config(bg=color)
+
+    def set_seats_clicked(self, seat_number):
+        if seat_number in self.selected_seats:
+            # If seat is already selected, deselect it
+            self.selected_seats.remove(seat_number)
+            color = 'green'  # Set color back to green
+        else:
+            # If seat is not selected, select it
+            self.selected_seats.add(seat_number)
+            color = 'red'  # Set color to red
+
+        # Change background color of the clicked button
+        for button in self.btn_booking_btn_list:
+            if int(button.cget('text')) == seat_number:
+                button.config(bg=color, relief=tkinter.constants.SOLID if color == 'red' else tkinter.constants.RAISED)
+
+
+    def get_seat_list(self):
+        seat_list = []
+        for button in self.btn_booking_btn_list:
+            if button.cget('bg') == 'red':
+                seat_list.append('1')
+            else:
+                seat_list.append('0')
+        return ''.join(seat_list)
+
+    def book_seats(self):
+        seat_list = self.get_seat_list()
+        self.__o_controller.book_seats(seat_list)

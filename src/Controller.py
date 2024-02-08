@@ -43,7 +43,6 @@ class Controller:
     def change_booking_main(self):
         self.__o_gui.set_gui_status("main")
         self.__o_gui.update_gui()
-        self.__o_gui.booking_pop_up()
 
     def back(self):
         # TODO Information: We can do without resetting, because the old selection will be overwritten anyway when a
@@ -65,8 +64,13 @@ class Controller:
                 self.__o_gui.set_gui_status("event")
                 self.__o_gui.update_gui()
 
-    def cinema_title(self):
-        return self.__o_cinema.title()
+    def cinema_titles(self):
+        hall_ids = ['1']
+        cinema_titles = []
+        for hall_id in hall_ids:
+            title = self.__o_cinema.title(hall_id)
+            cinema_titles.append(title)
+        return cinema_titles
 
     def movie_titles(self):
         movie_ids = ['1', '2', '3']
@@ -118,18 +122,16 @@ class Controller:
     def get_booked_seats(self):
         return self.__o_cinema.get_booked_seats()
 
-    def book_seats(self, seat_list):
+    def book_seats(self, seat_list, selected_seats):
         self.__o_booking.set_booked_seats(seat_list)
+        self.__o_booking.set_selected_seats(selected_seats)
         self.__o_booking.update_database()
-
-
-    def get_booking_data(self):
+        self.change_booking_main()
+        self.__o_gui.update_gui()
         booking_data = self.__o_booking.update_database()
-        return booking_data
-
-    def set_booking_overview(self, booking_data):
         if booking_data:
-            self.__o_gui.booking_pop_up()
+            self.__o_gui.booking_pop_up(*booking_data)
+        self.__o_gui.update_gui()
 
     def exit(self):
         sys.exit(1)

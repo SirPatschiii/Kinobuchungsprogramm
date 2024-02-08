@@ -59,13 +59,21 @@ class Booking:
     def get_booked_seats(self):
         return self.__booked_seats
 
+    def set_selected_seats(self, selected_seats):
+        self.__selected_seats = selected_seats
+
+    def get_selected_seats(self):
+        return self.__selected_seats
+
     def update_database(self):
         try:
             self.__connect_db()
+            selected_seats_str = ', '.join(str(seat) for seat in self.__selected_seats)
+            cinema_title = self.__selected_cinema[0] if self.__selected_cinema else ""
             self.cursor_db.execute("""
                 SELECT hallID 
                 FROM cinema 
-                WHERE name=?""", (self.__selected_cinema,))
+                WHERE name=?""", (cinema_title,))
             hall_id = self.cursor_db.fetchone()[0]
 
             self.cursor_db.execute("""
@@ -81,14 +89,19 @@ class Booking:
                 WHERE date=?""", (self.__selected_event,))
             event_id = self.cursor_db.fetchone()[0]
 
-            self.cursor_db.execute("INSERT INTO bookings (hallID, movieID, eventID) VALUES (?, ?, ?)",
-                                   (hall_id, movie_id, event_id))
+            self.cursor_db.execute(
+                "INSERT INTO bookings (hallID, movieID, eventID, selected_seats) VALUES (?, ?, ?, ?)",
+                (hall_id, movie_id, event_id, selected_seats_str))
+            self.connect.commit()
+
+            self.cursor_db.execute("UPDATE cinema SET booked_seats=? WHERE hallID=?", (self.__booked_seats, hall_id))
             self.connect.commit()
 
             self.__booking_id = self.cursor_db.lastrowid
             self.__disconnect_db()
 
-            return self.__booking_id, self.__selected_cinema, self.__selected_movie, self.__selected_event
+            return (self.__booking_id, cinema_title, self.__selected_movie, self.__selected_event,
+                    self.__selected_seats)
         except Exception as e:
             print(f"Fehler beim Aktualisieren der Datenbank: {e}")
             return None

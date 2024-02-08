@@ -4,6 +4,7 @@ from pathlib import Path
 import time
 import tkinter as tk
 import tkinter.constants
+import tkinter.messagebox as tkmsgbox
 
 
 class GUI:
@@ -60,6 +61,8 @@ class GUI:
         self.booked_seats = None
         self.btn_booking_btn1 = None
         self.selected_seats = set()
+        self.selected_cinema_title = None
+        self.cinema_buttons = []
 
     def create_gui(self):
         self.__window.geometry("1000x700")
@@ -96,10 +99,10 @@ class GUI:
     def __update_gui_cinema_menu(self):
         self.__clear_gui()
 
-        self.btn_cinema_cinema1 = tk.Button(self.__window, text=self.__o_controller.cinema_title(),
-                                            command=lambda: self.__o_controller.change_cinema_movie(
-                                                self.__o_controller.cinema_title()), width=40, height=10)
-        self.btn_cinema_cinema1.place(x=340, y=260)
+        for cinema_title in self.__o_controller.cinema_titles():
+            btn_cinema = tk.Button(self.__window, text=cinema_title, command=lambda title=cinema_title: self.select_cinema(title), width=40, height=10)
+            btn_cinema.place(x=340, y=260)
+            self.cinema_buttons.append(btn_cinema)
 
     def __update_gui_movie_menu(self):
         self.__clear_gui()
@@ -233,25 +236,9 @@ class GUI:
         self.btn_booking_btn1 = tk.Button(self.__window, text="Buchen", command=self.book_seats, width=10, height=2)
         self.btn_booking_btn1.place(x=700, y=640)
 
-    def booking_pop_up(self, booking_id, selected_cinema, selected_movie, selected_event):
-        pop_up = tk.Tk()
-        pop_up.geometry("400x400")
-        pop_up.resizable(False, False)
-        pop_up.title("Buchungszusammenfassung")
-
-        lbl_booking_id = tk.Label(pop_up, text=f"Buchungs-ID: {booking_id}", font=("Arial", 14), width=50, height=2, anchor="w")
-        lbl_booking_id.place(x=80, y=60)
-        lbl_selected_cinema = tk.Label(pop_up, text=f"Ausgewähltes Kino: {selected_cinema}", font=("Arial", 14), width=50, height=2, anchor="w")
-        lbl_selected_cinema.place(x=80, y=110)
-        lbl_selected_movie = tk.Label(pop_up, text=f"Ausgewählter Film: {selected_movie}", font=("Arial", 14), width=50, height=2, anchor="w")
-        lbl_selected_movie.place(x=80, y=160)
-        lbl_selected_event = tk.Label(pop_up, text=f"Ausgewähltes Event: {selected_event}", font=("Arial", 14), width=50, height=2, anchor="w")
-        lbl_selected_event.place(x=80, y=210)
-
-        btn_p_exit = tk.Button(pop_up, text="Exit", command=pop_up.destroy, width=10, height=2)
-        btn_p_exit.place(x=160, y=350)
-
-        pop_up.mainloop()
+    def booking_pop_up(self, booking_id, cinema_title, selected_movie, selected_event, selected_seats):
+        message = f"Buchungs-ID: {booking_id}\nAusgewähltes Kino: {cinema_title}\nAusgewählter Film: {selected_movie}\nAusgewähltes Event: {selected_event}\nAusgewählte Sitze: {selected_seats}"
+        tkmsgbox.showinfo("Buchungszusammenfassung", message)
 
     def __clear_gui(self):
         # This method destroys all elements on the current GUI to ensure only the correct widgets for the current
@@ -259,8 +246,6 @@ class GUI:
 
         try:
             self.btn_main_cinema.destroy()
-
-            self.btn_cinema_cinema1.destroy()
 
             self.lbl_movie_lab1.destroy()
             self.lbl_movie_lab2.destroy()
@@ -294,6 +279,14 @@ class GUI:
             log.exception(f"Error while destroying widgets: {e}")
 
         for button in self.btn_booking_btn_list:
+            try:
+                button.destroy()
+            except AttributeError as e:
+                log.exception(f"AttributeError: {e}")
+            except tk.TclError as e:
+                log.exception(f"Error while destroying widgets: {e}")
+
+        for button in self.cinema_buttons:
             try:
                 button.destroy()
             except AttributeError as e:
@@ -346,6 +339,15 @@ class GUI:
                 seat_list.append('0')
         return ''.join(seat_list)
 
+    def get_selected_seats(self):
+        return self.selected_seats
+
     def book_seats(self):
         seat_list = self.get_seat_list()
-        self.__o_controller.book_seats(seat_list)
+        selected_seats = self.get_selected_seats()
+        print(selected_seats)
+        self.__o_controller.book_seats(seat_list, selected_seats)
+
+    def select_cinema(self, cinema_title):
+        self.selected_cinema_title = cinema_title
+        self.__o_controller.change_cinema_movie(cinema_title)

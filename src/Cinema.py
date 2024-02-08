@@ -33,12 +33,12 @@ class Cinema:
         except sqlite3.DatabaseError as e:
             log.exception(f"Database error: {e}")
 
-    def title(self):
+    def title(self, hall_id):
         self.__connect_db()
-        self.cursor_db.execute("SELECT name FROM cinema WHERE hallID='1'")
+        self.cursor_db.execute(f"SELECT name FROM cinema WHERE hallID= '{hall_id}' ")
         user_data = self.cursor_db.fetchall()
         self.__disconnect_db()
-        return user_data
+        return user_data[0] if user_data else None
 
     def get_total_seats(self):
         self.__connect_db()

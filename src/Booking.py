@@ -16,6 +16,7 @@ class Booking:
         self.__selected_event = ""
         self.__booked_seats = ""
         self.__booking_id = None
+        self.__selected_seats = None
 
     def __connect_db(self):
         current_file_path = os.path.abspath(__file__)

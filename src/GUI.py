@@ -4,7 +4,7 @@ from pathlib import Path
 import time
 import tkinter as tk
 import tkinter.constants
-import tkinter.messagebox as tkmsgbox
+import tkinter.messagebox as tk_msg_box
 
 
 class GUI:
@@ -100,7 +100,8 @@ class GUI:
         self.__clear_gui()
 
         for cinema_title in self.__o_controller.cinema_titles():
-            btn_cinema = tk.Button(self.__window, text=cinema_title, command=lambda title=cinema_title: self.select_cinema(title), width=40, height=10)
+            btn_cinema = tk.Button(self.__window, text=cinema_title,
+                                   command=lambda title=cinema_title: self.select_cinema(title), width=40, height=10)
             btn_cinema.place(x=340, y=260)
             self.cinema_buttons.append(btn_cinema)
 
@@ -229,7 +230,9 @@ class GUI:
                 button_x = start_x + col * (button_width + padding_x)
                 button_y = start_y + row * (button_height + padding_y)
                 color = booked_seats[seat_number - 1]
-                button = tk.Button(self.__window, text=str(seat_number), command=lambda num=seat_number: self.set_seats_clicked(num), width=5, height=2, bg=color)
+                button = tk.Button(self.__window, text=str(seat_number),
+                                   command=lambda num=seat_number: self.set_seats_clicked(num),
+                                   width=5, height=2, bg=color)
                 button.place(x=button_x, y=button_y)
                 self.btn_booking_btn_list.append(button)
 
@@ -237,11 +240,12 @@ class GUI:
         self.btn_booking_btn1.place(x=700, y=640)
 
     def booking_pop_up(self, booking_id, cinema_title, selected_movie, selected_event, selected_seats):
-        message = f"Buchungs-ID: {booking_id}\nAusgewähltes Kino: {cinema_title}\nAusgewählter Film: {selected_movie}\nAusgewähltes Event: {selected_event}\nAusgewählte Sitze: {selected_seats}"
-        tkmsgbox.showinfo("Buchungszusammenfassung", message)
+        message = (f"Buchungs-ID: {booking_id}\nAusgewähltes Kino: {cinema_title}\nAusgewählter Film: "
+                   f"{selected_movie}\nAusgewähltes Event: {selected_event}\nAusgewählte Sitze: {selected_seats}")
+        tk_msg_box.showinfo("Buchungszusammenfassung", message)
 
     def __clear_gui(self):
-        # This method destroys all elements on the current GUI to ensure only the correct widgets for the current
+        # This method hides all elements on the current GUI to ensure only the correct widgets for the current
         # GUI state get displayed
 
         try:
@@ -328,7 +332,6 @@ class GUI:
         for button in self.btn_booking_btn_list:
             if int(button.cget('text')) == seat_number:
                 button.config(bg=color, relief=tkinter.constants.SOLID if color == 'red' else tkinter.constants.RAISED)
-
 
     def get_seat_list(self):
         seat_list = []

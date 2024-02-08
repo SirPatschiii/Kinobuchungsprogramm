@@ -55,4 +55,3 @@ class Cinema:
 
         booked_seats = ['green' if seat == '0' else 'red' for seat in booked_seats_str]
         return booked_seats
-

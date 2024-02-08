@@ -45,8 +45,6 @@ class Controller:
         self.__o_gui.update_gui()
 
     def back(self):
-        # TODO Information: We can do without resetting, because the old selection will be overwritten anyway when a
-        #  new selection is made.
         match self.__o_gui.get_gui_status():
             case "main":
                 self.__o_gui.set_gui_status("main")
@@ -92,7 +90,6 @@ class Controller:
         self.__o_booking.set_selected_event(p_selected_event)
 
     def set_seat_state(self, p_index):
-        # TODO wrong index arrives
         booked_seats = self.__o_gui.get_booked_seats()
         if not booked_seats[p_index - 1]:
             booked_seats[p_index - 1] = True

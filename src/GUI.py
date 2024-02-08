@@ -245,34 +245,34 @@ class GUI:
         # GUI state get displayed
 
         try:
-            self.btn_main_cinema.destroy()
+            self.btn_main_cinema.place_forget()
 
-            self.lbl_movie_lab1.destroy()
-            self.lbl_movie_lab2.destroy()
-            self.lbl_movie_lab3.destroy()
-            self.btn_movie_mov1.destroy()
-            self.btn_movie_mov2.destroy()
-            self.btn_movie_mov3.destroy()
-            self.txt_movie_txt1.destroy()
-            self.txt_movie_txt2.destroy()
-            self.txt_movie_txt3.destroy()
-            self.scb_movie_scb1.destroy()
-            self.scb_movie_scb2.destroy()
-            self.scb_movie_scb3.destroy()
-            self.fra_movie_fra1.destroy()
-            self.fra_movie_fra2.destroy()
-            self.fra_movie_fra3.destroy()
+            self.lbl_movie_lab1.place_forget()
+            self.lbl_movie_lab2.place_forget()
+            self.lbl_movie_lab3.place_forget()
+            self.btn_movie_mov1.place_forget()
+            self.btn_movie_mov2.place_forget()
+            self.btn_movie_mov3.place_forget()
+            self.txt_movie_txt1.place_forget()
+            self.txt_movie_txt2.place_forget()
+            self.txt_movie_txt3.place_forget()
+            self.scb_movie_scb1.place_forget()
+            self.scb_movie_scb2.place_forget()
+            self.scb_movie_scb3.place_forget()
+            self.fra_movie_fra1.place_forget()
+            self.fra_movie_fra2.place_forget()
+            self.fra_movie_fra3.place_forget()
 
-            self.lbl_event_lab1.destroy()
-            self.rad_event_rad1.destroy()
-            self.rad_event_rad2.destroy()
-            self.rad_event_rad3.destroy()
-            self.btn_event_btn1.destroy()
+            self.lbl_event_lab1.place_forget()
+            self.rad_event_rad1.place_forget()
+            self.rad_event_rad2.place_forget()
+            self.rad_event_rad3.place_forget()
+            self.btn_event_btn1.place_forget()
 
-            self.lbl_booking_lab1.destroy()
-            self.lbl_booking_lab2.destroy()
-            self.lbl_booking_lab3.destroy()
-            self.btn_booking_btn1.destroy()
+            self.lbl_booking_lab1.place_forget()
+            self.lbl_booking_lab2.place_forget()
+            self.lbl_booking_lab3.place_forget()
+            self.btn_booking_btn1.place_forget()
         except AttributeError as e:
             log.exception(f"AttributeError: {e}")
         except tk.TclError as e:
@@ -280,7 +280,7 @@ class GUI:
 
         for button in self.btn_booking_btn_list:
             try:
-                button.destroy()
+                button.place_forget()
             except AttributeError as e:
                 log.exception(f"AttributeError: {e}")
             except tk.TclError as e:
@@ -288,7 +288,7 @@ class GUI:
 
         for button in self.cinema_buttons:
             try:
-                button.destroy()
+                button.place_forget()
             except AttributeError as e:
                 log.exception(f"AttributeError: {e}")
             except tk.TclError as e:

@@ -51,7 +51,6 @@ class Booking:
         self.__selected_event = event_rad_selection
 
     def get_selected_event(self):
-        print(self.__selected_event)
         return self.__selected_event
 
     def set_booked_seats(self, seat_list):
@@ -95,7 +94,7 @@ class Booking:
                 (hall_id, movie_id, event_id, selected_seats_str))
             self.connect.commit()
 
-            self.cursor_db.execute("UPDATE cinema SET booked_seats=? WHERE hallID=?", (self.__booked_seats, hall_id))
+            self.cursor_db.execute("UPDATE events SET booked_seats=? WHERE hallID=?", (self.__booked_seats, hall_id))
             self.connect.commit()
 
             self.__booking_id = self.cursor_db.lastrowid

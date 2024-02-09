@@ -9,7 +9,7 @@ class Event:
 
         self.cursor_db = None
         self.connect = None
-        self.__movie_id = []
+        self.__movie_id = ""
 
     def __connect_db(self):
         current_file_path = os.path.abspath(__file__)
@@ -49,9 +49,13 @@ class Event:
     def get_event_title(self):
         self.__connect_db()
         hall_id = self.__selected_hall_id
-        self.cursor_db.execute(f"SELECT date FROM events WHERE hallID='{hall_id}'")
+        movie_id = self.__movie_id
+        # TODO movie_id wird nicht richtig abgerufen
+        self.cursor_db.execute(f"""
+            SELECT date 
+            FROM events 
+            WHERE hallID='{hall_id}' AND movieID='1'""")
         events = self.cursor_db.fetchall()
-        print(events)
         self.__disconnect_db()
         return [event[0] for event in events] if events else []
 

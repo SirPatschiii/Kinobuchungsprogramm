@@ -101,7 +101,6 @@ class GUI:
         self.__clear_gui()
 
         cinemas = self.__o_controller.get_all_cinemas()
-        print(cinemas)
         x_position = 320
         y_position = 260
         for hall_id, cinema_title in cinemas:
@@ -310,7 +309,6 @@ class GUI:
     def book_seats(self):
         seat_list = self.get_seat_list()
         selected_seats = self.get_selected_seats()
-        print(selected_seats)
         self.__o_controller.book_seats(seat_list, selected_seats)
 
     def select_cinema(self, hall_id, cinema_title):

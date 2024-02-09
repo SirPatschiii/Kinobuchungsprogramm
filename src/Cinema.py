@@ -9,6 +9,7 @@ class Cinema:
 
         self.cursor_db = None
         self.connect = None
+        self.__selected_event = ""
 
     def __connect_db(self):
         current_file_path = os.path.abspath(__file__)
@@ -54,9 +55,16 @@ class Cinema:
         self.__disconnect_db()
         return total_seats
 
+    def set_selected_event(self, event_rad_selection):
+        self.__selected_event = event_rad_selection
+
+    def get_selected_event(self):
+        return self.__selected_event
+
     def get_booked_seats(self):
         self.__connect_db()
-        self.cursor_db.execute(f"SELECT booked_seats FROM cinema WHERE hallID='1'")
+        selected_event = self.__selected_event
+        self.cursor_db.execute(f"SELECT booked_seats FROM events WHERE hallID='1'")
         booked_seats_str = self.cursor_db.fetchone()[0]
         self.__disconnect_db()
 

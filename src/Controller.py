@@ -34,6 +34,7 @@ class Controller:
         self.__o_gui.set_gui_status("event")
         self.__o_gui.update_gui()
         self.__o_booking.set_selected_movie(movie_title_lbl)
+        self.__o_movie.set_selected_movie(movie_title_lbl)
 
     def change_event_booking(self):
         self.__o_gui.set_gui_status("booking")
@@ -81,6 +82,7 @@ class Controller:
 
     def set_selected_event(self, p_selected_event):
         self.__o_booking.set_selected_event(p_selected_event)
+        self.__o_cinema.set_selected_event(p_selected_event)
 
     def set_seat_state(self, p_index):
         booked_seats = self.__o_gui.get_booked_seats()
@@ -96,9 +98,10 @@ class Controller:
     def get_movie_id(self):
         return self.__o_movie.get_movie_id()
 
-    def set_movie_ids(self):
-        movie_id = self.get_movie_id()
+    def set_movie_id(self):
+        movie_id = self.__o_movie.get_movie_id()
         self.__o_event.set_movie_id(movie_id)
+
 
     def get_selected_cinema(self):
         return self.__o_booking.get_selected_cinema()

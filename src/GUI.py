@@ -197,6 +197,8 @@ class GUI:
     def __update_gui_booking_menu(self):
         self.__clear_gui()
 
+        self.selected_seats = set()
+
         self.lbl_booking_lab1 = tk.Label(self.__window, text=self.__o_controller.get_selected_movie(),
                                          font=("Arial", 14), width=50, height=2, anchor="w")
         self.lbl_booking_lab1.place(x=80, y=60)

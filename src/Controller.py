@@ -21,13 +21,13 @@ class Controller:
         self.__o_gui.create_gui()
 
     def change_gui_cinema(self):
+        self.__o_cinema.get_all_cinemas()
         self.__o_gui.set_gui_status("cinema")
         self.__o_gui.update_gui()
 
-    def change_cinema_movie(self, cinema_title):
+    def change_cinema_movie(self):
         self.__o_gui.set_gui_status("movie")
         self.__o_gui.update_gui()
-        self.__o_booking.set_selected_cinema(cinema_title)
 
     def change_movie_event(self, movie_title_lbl):
         self.__o_gui.set_event_lab1_var(movie_title_lbl)
@@ -62,29 +62,22 @@ class Controller:
                 self.__o_gui.set_gui_status("event")
                 self.__o_gui.update_gui()
 
-    def cinema_titles(self):
-        hall_ids = ['1']
-        cinema_titles = []
-        for hall_id in hall_ids:
-            title = self.__o_cinema.title(hall_id)
-            cinema_titles.append(title)
-        return cinema_titles
+    def get_all_cinemas(self):
+        return self.__o_cinema.get_all_cinemas()
 
     def movie_titles(self):
-        movie_ids = ['1', '2', '3']
-        titles = []
-        for movie_id in movie_ids:
-            title = self.__o_movie.title(movie_id)
-            titles.append(title)
-        return titles
+        movies = self.__o_movie.get_movie_title()
+        return movies
 
     def show_events(self):
-        event_ids = ['1', '2', '3']
-        event_list = []
-        for event_id in event_ids:
-            events = self.__o_event.title(event_id)
-            event_list.append(events)
-        return event_list
+        events = self.__o_event.get_event_title()
+        event_titles = [event for event in events]  # Extracting titles from the fetched events
+        return event_titles
+
+    def set_selected_cinema(self, cinema_title, hall_id):
+        self.__o_booking.set_selected_cinema(cinema_title, hall_id)
+        self.__o_movie.set_selected_cinema(hall_id)
+        self.__o_event.set_selected_cinema(hall_id)
 
     def set_selected_event(self, p_selected_event):
         self.__o_booking.set_selected_event(p_selected_event)
@@ -97,12 +90,15 @@ class Controller:
         self.__o_gui.update_gui()
 
     def show_movie_description(self):
-        movie_ids = ['1', '2', '3']
-        descriptions = []
-        for movie_id in movie_ids:
-            description = self.__o_movie.movie_description(movie_id)
-            descriptions.append(description)
-        return descriptions
+        movie_descriptions = self.__o_movie.movie_description()
+        return movie_descriptions
+
+    def get_movie_id(self):
+        return self.__o_movie.get_movie_id()
+
+    def set_movie_ids(self):
+        movie_id = self.get_movie_id()
+        self.__o_event.set_movie_id(movie_id)
 
     def get_selected_cinema(self):
         return self.__o_booking.get_selected_cinema()

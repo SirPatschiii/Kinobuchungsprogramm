@@ -33,16 +33,32 @@ class Movie:
         except sqlite3.DatabaseError as e:
             log.exception(f"Database error: {e}")
 
-    def title(self, movie_id):
-        self.__connect_db()
-        self.cursor_db.execute(f"SELECT name FROM movie WHERE movieID='{movie_id}'")
-        movie = self.cursor_db.fetchone()
-        self.__disconnect_db()
-        return movie[0] if movie else None
+    def set_selected_cinema(self, hall_id):
+        self.__selected_hall_id = hall_id
 
-    def movie_description(self, movie_id):
+    def get_selected_cinema(self):
+        return self.__selected_hall_id
+
+    def get_movie_title(self):
         self.__connect_db()
-        self.cursor_db.execute(f"SELECT description FROM movie WHERE movieID='{movie_id}'")
-        movie = self.cursor_db.fetchone()
-        self.__disconnect_db()
-        return movie[0] if movie else None
+        hall_id = self.__selected_hall_id
+        self.cursor_db.execute(f"SELECT name FROM movie WHERE hallID='{hall_id}'")
+        movies = self.cursor_db.fetchall()
+        return [movie[0] for movie in movies] if movies else []
+
+    def get_movie_id(self):
+        self.__connect_db()
+        hall_id = self.__selected_hall_id
+        self.cursor_db.execute(f"SELECT movieID FROM movie WHERE hallID='{hall_id}'")
+        movie_id = self.cursor_db.fetchall()
+        return movie_id
+
+    def movie_description(self):
+        self.__connect_db()
+        movie_descriptions = []
+        movie_titles = self.get_movie_title()
+        for title in movie_titles:
+            self.cursor_db.execute(f"SELECT description FROM movie WHERE name='{title}'")
+            description = self.cursor_db.fetchone()
+            movie_descriptions.append(description[0] if description else None)
+        return movie_descriptions

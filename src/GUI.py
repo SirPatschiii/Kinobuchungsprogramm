@@ -62,6 +62,7 @@ class GUI:
         self.__btn_booking_btn1 = None
         self.__selected_seats = set()
         self.__selected_cinema_title = None
+        self.__selected_hall_id = None
         self.__cinema_buttons = []
 
     def create_gui(self):
@@ -99,11 +100,17 @@ class GUI:
     def __update_gui_cinema_menu(self):
         self.__clear_gui()
 
-        for cinema_title in self.__o_controller.cinema_titles():
+        cinemas = self.__o_controller.get_all_cinemas()
+        print(cinemas)
+        x_position = 320
+        y_position = 260
+        for hall_id, cinema_title in cinemas:
             btn_cinema = tk.Button(self.__window, text=cinema_title,
-                                   command=lambda title=cinema_title: self.select_cinema(title), width=40, height=10)
-            btn_cinema.place(x=340, y=260)
+                                   command=lambda hid=hall_id, title=cinema_title: self.select_cinema(hid, title),
+                                   width=40, height=10)
+            btn_cinema.place(x=x_position, y=y_position)
             self.__cinema_buttons.append(btn_cinema)
+            y_position += 180
 
     def __update_gui_movie_menu(self):
         self.__clear_gui()
@@ -306,9 +313,11 @@ class GUI:
         print(selected_seats)
         self.__o_controller.book_seats(seat_list, selected_seats)
 
-    def select_cinema(self, cinema_title):
+    def select_cinema(self, hall_id, cinema_title):
         self.__selected_cinema_title = cinema_title
-        self.__o_controller.change_cinema_movie(cinema_title)
+        self.__selected_hall_id = hall_id
+        self.__o_controller.set_selected_cinema(cinema_title, hall_id)
+        self.__o_controller.change_cinema_movie()
 
     def get_gui_status(self):
         return self.__gui_status

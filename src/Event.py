@@ -9,6 +9,7 @@ class Event:
 
         self.cursor_db = None
         self.connect = None
+        self.__movie_id = []
 
     def __connect_db(self):
         current_file_path = os.path.abspath(__file__)
@@ -33,9 +34,24 @@ class Event:
         except sqlite3.DatabaseError as e:
             log.exception(f"Database error: {e}")
 
-    def title(self, event_id):
+    def set_selected_cinema(self, hall_id):
+        self.__selected_hall_id = hall_id
+
+    def get_selected_cinema(self):
+        return self.__selected_hall_id
+
+    def set_movie_id(self, movie_id):
+        self.__movie_id = movie_id
+
+    def get_movie_id(self):
+        return self.__movie_id
+
+    def get_event_title(self):
         self.__connect_db()
-        self.cursor_db.execute(f"SELECT date FROM events WHERE eventID='{event_id}'")
-        event = self.cursor_db.fetchone()
+        hall_id = self.__selected_hall_id
+        self.cursor_db.execute(f"SELECT date FROM events WHERE hallID='{hall_id}'")
+        events = self.cursor_db.fetchall()
+        print(events)
         self.__disconnect_db()
-        return event[0] if event else None
+        return [event[0] for event in events] if events else []
+

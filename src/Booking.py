@@ -35,7 +35,7 @@ class Booking:
     def __disconnect_db(self):
         self.connect.close()
 
-    def set_selected_cinema(self, cinema_title):
+    def set_selected_cinema(self, cinema_title, hall_id):
         self.__selected_cinema = cinema_title
 
     def get_selected_cinema(self):

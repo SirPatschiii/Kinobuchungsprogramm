@@ -41,8 +41,6 @@ class Event:
     def get_selected_cinema(self):
         return self.__selected_hall_id
 
-
-
     def set_selected_movie(self, movie_title_lbl):
         self.__selected_movie = movie_title_lbl
 

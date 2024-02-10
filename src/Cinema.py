@@ -10,6 +10,7 @@ class Cinema:
         self.cursor_db = None
         self.connect = None
         self.__selected_event = ""
+        self.__selected_movie = None
 
     def __connect_db(self):
         current_file_path = os.path.abspath(__file__)
@@ -61,10 +62,28 @@ class Cinema:
     def get_selected_event(self):
         return self.__selected_event
 
+    def set_selected_cinema(self, hall_id):
+        self.__selected_hall_id = hall_id
+
+    def get_selected_cinema(self):
+        return self.__selected_hall_id
+
+    def set_selected_movie(self, movie_title_lbl):
+        self.__selected_movie = movie_title_lbl
+
+    def get_selected_movie(self):
+        return self.__selected_movie
+
     def get_booked_seats(self):
         self.__connect_db()
         selected_event = self.__selected_event
-        self.cursor_db.execute(f"SELECT booked_seats FROM events WHERE hallID='1'")
+        hall_id = self.__selected_hall_id
+        movie = self.__selected_movie
+        self.cursor_db.execute(f"""
+            SELECT e.booked_seats
+            FROM events e
+            INNER JOIN movie m ON e.movieID = m.movieID
+            WHERE e.hallID = '{hall_id}' AND m.name = '{movie}' AND e.date = '{selected_event}' """)
         booked_seats_str = self.cursor_db.fetchone()[0]
         self.__disconnect_db()
 

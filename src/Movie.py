@@ -54,15 +54,6 @@ class Movie:
     def get_selected_movie(self):
         return self.__selected_movie
 
-    def get_movie_id(self):
-        self.cursor_db()
-        movie_title = self.__selected_movie
-        self.cursor_db.execute(f"SELECT movieID FROM movie WHERE name='{movie_title}'")
-        movie_id = self.cursor_db.fetchone()
-        return movie_id
-        # TODO movie_id wird nicht bzw. nicht richtig abgerufen
-
-
     def movie_description(self):
         self.__connect_db()
         movie_descriptions = []

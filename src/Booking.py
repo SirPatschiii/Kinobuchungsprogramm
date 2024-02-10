@@ -12,7 +12,7 @@ class Booking:
         self.connect = None
 
         self.__selected_cinema = ""
-        self.__selected_movie = ""
+        self.__selected_movie = None
         self.__selected_event = ""
         self.__booked_seats = ""
         self.__booking_id = None

@@ -31,10 +31,11 @@ class Controller:
 
     def change_movie_event(self, movie_title_lbl):
         self.__o_gui.set_event_lab1_var(movie_title_lbl)
+        self.__o_event.set_selected_movie(movie_title_lbl)
         self.__o_gui.set_gui_status("event")
         self.__o_gui.update_gui()
         self.__o_booking.set_selected_movie(movie_title_lbl)
-        self.__o_movie.set_selected_movie(movie_title_lbl)
+
 
     def change_event_booking(self):
         self.__o_gui.set_gui_status("booking")
@@ -94,14 +95,6 @@ class Controller:
     def show_movie_description(self):
         movie_descriptions = self.__o_movie.movie_description()
         return movie_descriptions
-
-    def get_movie_id(self):
-        return self.__o_movie.get_movie_id()
-
-    def set_movie_id(self):
-        movie_id = self.__o_movie.get_movie_id()
-        self.__o_event.set_movie_id(movie_id)
-
 
     def get_selected_cinema(self):
         return self.__o_booking.get_selected_cinema()

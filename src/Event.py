@@ -10,6 +10,7 @@ class Event:
         self.cursor_db = None
         self.connect = None
         self.__movie_id = ""
+        self.__selected_movie = None
 
     def __connect_db(self):
         current_file_path = os.path.abspath(__file__)
@@ -40,21 +41,24 @@ class Event:
     def get_selected_cinema(self):
         return self.__selected_hall_id
 
-    def set_movie_id(self, movie_id):
-        self.__movie_id = movie_id
 
-    def get_movie_id(self):
-        return self.__movie_id
+
+    def set_selected_movie(self, movie_title_lbl):
+        self.__selected_movie = movie_title_lbl
+
+    def get_selected_movie(self):
+        return self.__selected_movie
 
     def get_event_title(self):
         self.__connect_db()
         hall_id = self.__selected_hall_id
-        movie_id = self.__movie_id
+        movie = self.__selected_movie
         # TODO movie_id wird nicht richtig abgerufen
         self.cursor_db.execute(f"""
-            SELECT date 
-            FROM events 
-            WHERE hallID='{hall_id}' AND movieID='1'""")
+            SELECT e.date, m.name
+            FROM events e
+            INNER JOIN movie m ON e.movieID = m.movieID
+            WHERE e.hallID = '{hall_id}' AND m.name = '{movie}' """)
         events = self.cursor_db.fetchall()
         self.__disconnect_db()
         return [event[0] for event in events] if events else []

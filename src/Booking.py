@@ -69,6 +69,8 @@ class Booking:
         try:
             self.__connect_db()
             selected_seats_str = ', '.join(str(seat) for seat in self.__selected_seats)
+            if selected_seats_str == '':
+                return None
             cinema_title = self.__selected_cinema if self.__selected_cinema else ""
 
             self.cursor_db.execute("""

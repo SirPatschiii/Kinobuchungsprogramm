@@ -212,8 +212,8 @@ class GUI:
                                            font=("Arial", 14), width=50, height=2, anchor="w")
         self.__lbl_booking_lab2.place(x=80, y=110)
         self.__lbl_booking_lab3 = tk.Label(self.__window, text=self.__o_controller.get_selected_event(),
-                                           font=("Arial", 14), width=50, height=2, anchor="e")
-        self.__lbl_booking_lab3.place(x=350, y=60)
+                                           font=("Arial", 14), width=20, height=2, anchor="e")
+        self.__lbl_booking_lab3.place(x=680, y=60)
 
         total_seats_tuple = self.__o_controller.get_total_seats()
         total_seats = total_seats_tuple[0]

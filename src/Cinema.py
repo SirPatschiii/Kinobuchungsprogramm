@@ -11,6 +11,7 @@ class Cinema:
         self.connect = None
         self.__selected_event = ""
         self.__selected_movie = None
+        self.__selected_hall_id = int()
 
     def __connect_db(self):
         current_file_path = os.path.abspath(__file__)

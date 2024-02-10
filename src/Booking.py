@@ -87,7 +87,7 @@ class Booking:
             self.cursor_db.execute("""
                 SELECT eventID 
                 FROM events 
-                WHERE date=?""", (self.__selected_event,))
+                WHERE date=? AND hallID=?""", (self.__selected_event,hall_id,))
             event_id = self.cursor_db.fetchone()[0]
 
             self.cursor_db.execute(

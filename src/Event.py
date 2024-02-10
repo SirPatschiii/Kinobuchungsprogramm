@@ -11,6 +11,7 @@ class Event:
         self.connect = None
         self.__movie_id = ""
         self.__selected_movie = None
+        self.__selected_hall_id = int()
 
     def __connect_db(self):
         current_file_path = os.path.abspath(__file__)
@@ -60,4 +61,3 @@ class Event:
         events = self.cursor_db.fetchall()
         self.__disconnect_db()
         return [event[0] for event in events] if events else []
-

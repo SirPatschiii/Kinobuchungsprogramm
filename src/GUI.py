@@ -101,8 +101,8 @@ class GUI:
         self.__clear_gui()
 
         cinemas = self.__o_controller.get_all_cinemas()
-        x_position = 320
-        y_position = 260
+        x_position = 335
+        y_position = 165
         for hall_id, cinema_title in cinemas:
             btn_cinema = tk.Button(self.__window, text=cinema_title,
                                    command=lambda hid=hall_id, title=cinema_title: self.select_cinema(hid, title),
@@ -242,6 +242,8 @@ class GUI:
                                    command=lambda num=seat_number: self.set_seats_clicked(num),
                                    width=5, height=2, bg=color)
                 button.place(x=button_x, y=button_y)
+                if button.cget("bg") == "red":
+                    button.config(state="disabled")
                 self.__btn_booking_btn_list.append(button)
 
         self.__btn_booking_btn1 = tk.Button(self.__window, text="Buchen", command=self.book_seats, width=10, height=2)

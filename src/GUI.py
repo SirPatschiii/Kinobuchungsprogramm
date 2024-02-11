@@ -121,7 +121,7 @@ class GUI:
         self.__lbl_movie_lab3 = tk.Label(self.__window, text="3", font=("Arial", 20), width=10, height=10)
         self.__lbl_movie_lab3.place(x=0, y=400)
 
-        self.movie_titles = self.__o_controller.movie_titles()
+        self.movie_titles = self.__o_controller.get_movie_titles()
 
         self.__btn_movie_mov1 = tk.Button(self.__window, text=self.movie_titles[0], command=lambda
                                         movie_title_lbl=self.movie_titles[0]: self.__o_controller.change_movie_event(
@@ -136,7 +136,7 @@ class GUI:
                                         movie_title_lbl), width=50, height=5)
         self.__btn_movie_mov3.place(x=150, y=520)
 
-        self.movie_descriptions = self.__o_controller.show_movie_description()
+        self.movie_descriptions = self.__o_controller.get_movie_description()
 
         self.__fra_movie_fra1 = tk.Frame(self.__window, width=55, height=5)
         self.__fra_movie_fra1.place(x=550, y=70)
@@ -174,7 +174,7 @@ class GUI:
     def __update_gui_event_menu(self):
         self.__clear_gui()
 
-        self.event_select = self.__o_controller.show_events()
+        self.event_select = self.__o_controller.get_events()
         self.__o_controller.set_selected_event(self.event_select[0])
 
         self.__lbl_event_lab1 = tk.Label(self.__window, text=self.__event_lab1_var, font=("Arial", 14), width=50, height=2,

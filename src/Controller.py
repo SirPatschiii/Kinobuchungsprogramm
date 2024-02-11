@@ -87,7 +87,7 @@ class Controller:
         return event_titles
 
     def get_movie_description(self):
-        movie_descriptions = self.__o_movie.movie_description()
+        movie_descriptions = self.__o_movie.get_movie_description()
         return movie_descriptions
 
     def get_selected_cinema(self):

@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-02-11T17:23:20.597Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.21 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="LpDTktYP6br250n8hwnV" version="22.1.21" type="device">
+<mxfile host="Electron" modified="2024-02-11T18:16:47.176Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.21 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="bjPAPv2JpbYmuK394aRO" version="22.1.21" type="device">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
-    <mxGraphModel dx="472" dy="835" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="1000" math="0" shadow="0">
+    <mxGraphModel dx="416" dy="835" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1300" pageHeight="1200" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
@@ -15,7 +15,7 @@
         <mxCell id="kE-SQpUTUfHKzQzaQdZS-12" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="kE-SQpUTUfHKzQzaQdZS-10" vertex="1">
           <mxGeometry y="110" width="360" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="kE-SQpUTUfHKzQzaQdZS-13" value="+ __init__()&lt;br&gt;+ change_gui_cinema()&lt;br&gt;+ change_cinema_movie()&lt;br&gt;+ change_movie_event(movie_title_lbl: String)&lt;br&gt;+ change_event_booking()&lt;br&gt;+ change_booking_main()&lt;br&gt;+ back()&lt;br&gt;+ book_seats(seat_list: Boolean[], selected_seats: set)&lt;br&gt;+ get_all_cinemas(): String[]&lt;br&gt;+ get_movie_titles(): String[]&lt;br&gt;+ get_events(): String[]&lt;br&gt;+ get_movie_description(): String[]&lt;br&gt;+ get_selected_cinema(): String&lt;br&gt;+ get_selected_movie(): String&lt;br&gt;+ get_selected_event(): String&lt;br&gt;+ get_total_seats(): int&lt;br&gt;+ get_booked_seats(): set&lt;br&gt;+ set_selected_cinema(cinema_title: String, hall_id: int)&lt;br&gt;+ set_selected_event(p_selected_event)&lt;br&gt;+ set_seat_state(p_index: int)&lt;br&gt;+ exit()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="kE-SQpUTUfHKzQzaQdZS-10" vertex="1">
+        <mxCell id="kE-SQpUTUfHKzQzaQdZS-13" value="- __init__()&lt;br&gt;+ change_gui_cinema()&lt;br&gt;+ change_cinema_movie()&lt;br&gt;+ change_movie_event(movie_title_lbl: String)&lt;br&gt;+ change_event_booking()&lt;br&gt;+ change_booking_main()&lt;br&gt;+ back()&lt;br&gt;+ book_seats(seat_list: Boolean[], selected_seats: set)&lt;br&gt;+ get_all_cinemas(): String[]&lt;br&gt;+ get_movie_titles(): String[]&lt;br&gt;+ get_events(): String[]&lt;br&gt;+ get_movie_description(): String[]&lt;br&gt;+ get_selected_cinema(): String&lt;br&gt;+ get_selected_movie(): String&lt;br&gt;+ get_selected_event(): String&lt;br&gt;+ get_total_seats(): int&lt;br&gt;+ get_booked_seats(): set&lt;br&gt;+ set_selected_cinema(cinema_title: String, hall_id: int)&lt;br&gt;+ set_selected_event(p_selected_event)&lt;br&gt;+ set_seat_state(p_index: int)&lt;br&gt;+ exit()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="kE-SQpUTUfHKzQzaQdZS-10" vertex="1">
           <mxGeometry y="118" width="360" height="312" as="geometry" />
         </mxCell>
         <mxCell id="kE-SQpUTUfHKzQzaQdZS-14" value="GUI" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
@@ -29,64 +29,64 @@
         <mxCell id="kE-SQpUTUfHKzQzaQdZS-16" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="kE-SQpUTUfHKzQzaQdZS-14" vertex="1">
           <mxGeometry y="590" width="360" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="kE-SQpUTUfHKzQzaQdZS-17" value="+ __init__(p_controller: Controller)&lt;br&gt;+ create_gui()&lt;br&gt;+ update_gui()&lt;br&gt;- __update_gui_main_menu()&lt;br&gt;- __update_gui_cinema_menu()&lt;br&gt;- __update_gui_movie_menu()&lt;br&gt;- __update_gui_event_menu()&lt;br&gt;- __update_gui_booking_menu()&lt;br&gt;+ booking_pop_up(booding_id: int, cinema_title: String, selected_movie: String, selected_event: String, selected_seats: set)&lt;br&gt;- __clear_gui()&lt;br&gt;+ book_seats()&lt;br&gt;+ select_cinema(hall_id: int, cinema_title: String)&lt;br&gt;+ get_gui_status(): String&lt;br&gt;+ get_booked_seats(): Boolean[]&lt;br&gt;+ get_seat_list(): String&lt;br&gt;+ get_selected_seats(): set&lt;br&gt;+ set_gui_status(p_gui_status: String)&lt;br&gt;+ set_event_lab1_var(p_event_lbl1_var: String)&lt;br&gt;+ set_booked_seats(booked_seats: Boolean[])&lt;br&gt;+ set_seats_clicked(seat_number: Boolean[])" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="kE-SQpUTUfHKzQzaQdZS-14" vertex="1">
+        <mxCell id="kE-SQpUTUfHKzQzaQdZS-17" value="- __init__(p_controller: Controller)&lt;br&gt;+ create_gui()&lt;br&gt;+ update_gui()&lt;br&gt;- __update_gui_main_menu()&lt;br&gt;- __update_gui_cinema_menu()&lt;br&gt;- __update_gui_movie_menu()&lt;br&gt;- __update_gui_event_menu()&lt;br&gt;- __update_gui_booking_menu()&lt;br&gt;+ booking_pop_up(booding_id: int, cinema_title: String, selected_movie: String, selected_event: String, selected_seats: set)&lt;br&gt;- __clear_gui()&lt;br&gt;+ book_seats()&lt;br&gt;+ select_cinema(hall_id: int, cinema_title: String)&lt;br&gt;+ get_gui_status(): String&lt;br&gt;+ get_booked_seats(): Boolean[]&lt;br&gt;+ get_seat_list(): String&lt;br&gt;+ get_selected_seats(): set&lt;br&gt;+ set_gui_status(p_gui_status: String)&lt;br&gt;+ set_event_lab1_var(p_event_lbl1_var: String)&lt;br&gt;+ set_booked_seats(booked_seats: Boolean[])&lt;br&gt;+ set_seats_clicked(seat_number: Boolean[])" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="kE-SQpUTUfHKzQzaQdZS-14" vertex="1">
           <mxGeometry y="598" width="360" height="332" as="geometry" />
         </mxCell>
         <mxCell id="8NvbRjS3b2bipV3s16NQ-27" value="Cinema" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="40" y="200" width="360" height="86" as="geometry">
+          <mxGeometry x="40" y="200" width="360" height="320" as="geometry">
             <mxRectangle x="280" y="40" width="100" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="8NvbRjS3b2bipV3s16NQ-28" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8NvbRjS3b2bipV3s16NQ-27" vertex="1">
-          <mxGeometry y="26" width="360" height="26" as="geometry" />
+        <mxCell id="8NvbRjS3b2bipV3s16NQ-28" value="- __connect: Connection&lt;br&gt;- __cursor_db: Cursor&lt;br&gt;- __selected_event: String&lt;br&gt;- __selected_hall_id: int&lt;br&gt;- __selected_movie: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8NvbRjS3b2bipV3s16NQ-27" vertex="1">
+          <mxGeometry y="26" width="360" height="84" as="geometry" />
         </mxCell>
         <mxCell id="8NvbRjS3b2bipV3s16NQ-29" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="8NvbRjS3b2bipV3s16NQ-27" vertex="1">
-          <mxGeometry y="52" width="360" height="8" as="geometry" />
+          <mxGeometry y="110" width="360" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="8NvbRjS3b2bipV3s16NQ-30" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8NvbRjS3b2bipV3s16NQ-27" vertex="1">
-          <mxGeometry y="60" width="360" height="26" as="geometry" />
+        <mxCell id="8NvbRjS3b2bipV3s16NQ-30" value="- __init__()&lt;br&gt;- __connect_db()&lt;br&gt;- __disconnect_db()&lt;br&gt;+ get_all_cinemas(): String[]&lt;br&gt;+ title(hall_id: int): String&lt;br&gt;+ get_total_seats(): int&lt;br&gt;+ set_selected_event(event_rad_selection: set)&lt;br&gt;+ get_selected_event(): String&lt;br&gt;+ set_selected_cinema(hall_id: int)&lt;br&gt;+ get_selected_cinema(): String&lt;br&gt;+ set_selected_movie(movie_title_lbl: String)&lt;br&gt;+ get_selected_movie(): String&lt;br&gt;+ get_booked_seats(): int[]" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8NvbRjS3b2bipV3s16NQ-27" vertex="1">
+          <mxGeometry y="118" width="360" height="202" as="geometry" />
         </mxCell>
         <mxCell id="8NvbRjS3b2bipV3s16NQ-31" value="Movie" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="40" y="320" width="360" height="86" as="geometry">
+          <mxGeometry x="40" y="560" width="360" height="250" as="geometry">
             <mxRectangle x="280" y="40" width="100" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="8NvbRjS3b2bipV3s16NQ-32" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8NvbRjS3b2bipV3s16NQ-31" vertex="1">
-          <mxGeometry y="26" width="360" height="26" as="geometry" />
+        <mxCell id="8NvbRjS3b2bipV3s16NQ-32" value="- __connect: Connection&lt;br&gt;- __cursor_db: Cursor&lt;br&gt;- __selected_hall_id: int&lt;br&gt;- __selected_movie: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8NvbRjS3b2bipV3s16NQ-31" vertex="1">
+          <mxGeometry y="26" width="360" height="74" as="geometry" />
         </mxCell>
         <mxCell id="8NvbRjS3b2bipV3s16NQ-33" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="8NvbRjS3b2bipV3s16NQ-31" vertex="1">
-          <mxGeometry y="52" width="360" height="8" as="geometry" />
+          <mxGeometry y="100" width="360" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="8NvbRjS3b2bipV3s16NQ-34" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8NvbRjS3b2bipV3s16NQ-31" vertex="1">
-          <mxGeometry y="60" width="360" height="26" as="geometry" />
+        <mxCell id="8NvbRjS3b2bipV3s16NQ-34" value="- __init__()&lt;br&gt;- __connect_db()&lt;br&gt;- __disconnect_db()&lt;br&gt;+ set_selected_cinema(hall_id: int)&lt;br&gt;+ get_selected_cinema(): String&lt;br&gt;+ get_movie_title(): String[]&lt;br&gt;+ set_selected_movie(movie_title_lbl: String)&lt;br&gt;+ get_selected_movie(): String&lt;br&gt;+ get_movie_description(): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8NvbRjS3b2bipV3s16NQ-31" vertex="1">
+          <mxGeometry y="108" width="360" height="142" as="geometry" />
         </mxCell>
         <mxCell id="8NvbRjS3b2bipV3s16NQ-35" value="Event" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="40" y="440" width="360" height="86" as="geometry">
+          <mxGeometry x="480" y="520" width="360" height="250" as="geometry">
             <mxRectangle x="280" y="40" width="100" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="8NvbRjS3b2bipV3s16NQ-36" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8NvbRjS3b2bipV3s16NQ-35" vertex="1">
-          <mxGeometry y="26" width="360" height="26" as="geometry" />
+        <mxCell id="8NvbRjS3b2bipV3s16NQ-36" value="- __connect: Connection&lt;br&gt;- __cursor_db: Cursor&lt;br&gt;- __movie_id: int&lt;br&gt;- __selected_hall_id: int&lt;br&gt;- __selected_movie: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8NvbRjS3b2bipV3s16NQ-35" vertex="1">
+          <mxGeometry y="26" width="360" height="84" as="geometry" />
         </mxCell>
         <mxCell id="8NvbRjS3b2bipV3s16NQ-37" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" parent="8NvbRjS3b2bipV3s16NQ-35" vertex="1">
-          <mxGeometry y="52" width="360" height="8" as="geometry" />
+          <mxGeometry y="110" width="360" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="8NvbRjS3b2bipV3s16NQ-38" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8NvbRjS3b2bipV3s16NQ-35" vertex="1">
-          <mxGeometry y="60" width="360" height="26" as="geometry" />
+        <mxCell id="8NvbRjS3b2bipV3s16NQ-38" value="- __init__()&lt;br&gt;- __connect_db()&lt;br&gt;- __disconnect_db()&lt;br&gt;+ set_selected_cinema(hall_id: int)&lt;br&gt;+ get_selected_cinema(): String&lt;br&gt;+ set_selected_movie(movie_title_lbl: String)&lt;br&gt;+ get_selected_movie(): String&lt;br&gt;+ get_event_title(): String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8NvbRjS3b2bipV3s16NQ-35" vertex="1">
+          <mxGeometry y="118" width="360" height="132" as="geometry" />
         </mxCell>
         <mxCell id="8NvbRjS3b2bipV3s16NQ-39" value="Booking" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;rotation=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
-          <mxGeometry x="40" y="560" width="360" height="86" as="geometry">
+          <mxGeometry x="480" y="800" width="360" height="370" as="geometry">
             <mxRectangle x="280" y="40" width="100" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="8NvbRjS3b2bipV3s16NQ-40" value="+ field: type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;rotation=0;" parent="8NvbRjS3b2bipV3s16NQ-39" vertex="1">
-          <mxGeometry y="26" width="360" height="26" as="geometry" />
+        <mxCell id="8NvbRjS3b2bipV3s16NQ-40" value="- __booked_seats: set&lt;br&gt;- __booking_id: int&lt;br&gt;- __connect: Connection&lt;br&gt;- __cursor_db: Cursor&lt;br&gt;- __selected_cinema: String&lt;br&gt;- __selected_event: String&lt;br&gt;- __selected_movie: String&lt;br&gt;- __selected_seats: set" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;rotation=0;" parent="8NvbRjS3b2bipV3s16NQ-39" vertex="1">
+          <mxGeometry y="26" width="360" height="124" as="geometry" />
         </mxCell>
         <mxCell id="8NvbRjS3b2bipV3s16NQ-41" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;rotation=0;" parent="8NvbRjS3b2bipV3s16NQ-39" vertex="1">
-          <mxGeometry y="52" width="360" height="8" as="geometry" />
+          <mxGeometry y="150" width="360" height="8" as="geometry" />
         </mxCell>
-        <mxCell id="8NvbRjS3b2bipV3s16NQ-42" value="+ method(type): type" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;rotation=0;" parent="8NvbRjS3b2bipV3s16NQ-39" vertex="1">
-          <mxGeometry y="60" width="360" height="26" as="geometry" />
+        <mxCell id="8NvbRjS3b2bipV3s16NQ-42" value="- __init__()&lt;br&gt;- __connect_db()&lt;br&gt;- __disconnect_db()&lt;br&gt;+ set_selected_cinema(cinema_title: String, hall_id: int)&lt;br&gt;+ get_selected_cinema(): String&lt;br&gt;+ set_selected_movie(movie_title_lbl: String)&lt;br&gt;+ get_selected_movie(): String&lt;br&gt;+ set_selected_event(event_rad_selection: String)&lt;br&gt;+ get_selected_event(): String&lt;br&gt;+ set_booked_seats(seat_list: int[])&lt;br&gt;+ get_booked_seats(): int[]&lt;br&gt;+ set_selected_seats(selected_seats: set)&lt;br&gt;+ get_selected_seats(): set&lt;br&gt;+ update_database()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;rotation=0;" parent="8NvbRjS3b2bipV3s16NQ-39" vertex="1">
+          <mxGeometry y="158" width="360" height="212" as="geometry" />
         </mxCell>
         <mxCell id="GHw8YcKN7eplV-2yb1Pl-1" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="kE-SQpUTUfHKzQzaQdZS-10" target="kE-SQpUTUfHKzQzaQdZS-14" edge="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -111,6 +111,37 @@
         </mxCell>
         <mxCell id="GHw8YcKN7eplV-2yb1Pl-6" value="- __create_controller()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="GHw8YcKN7eplV-2yb1Pl-3" vertex="1">
           <mxGeometry y="60" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="8dNp3ASR1_5wZ5_gyRGB-0" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="kE-SQpUTUfHKzQzaQdZS-10" target="8NvbRjS3b2bipV3s16NQ-27">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="250" y="126" as="sourcePoint" />
+            <mxPoint x="420" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8dNp3ASR1_5wZ5_gyRGB-1" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="kE-SQpUTUfHKzQzaQdZS-10" target="8NvbRjS3b2bipV3s16NQ-31">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="308" as="sourcePoint" />
+            <mxPoint x="410" y="327" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="430" y="510" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8dNp3ASR1_5wZ5_gyRGB-2" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="kE-SQpUTUfHKzQzaQdZS-10" target="8NvbRjS3b2bipV3s16NQ-39">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="430" y="260" as="sourcePoint" />
+            <mxPoint x="410" y="559" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="880" y="520" />
+              <mxPoint x="880" y="760" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8dNp3ASR1_5wZ5_gyRGB-4" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="kE-SQpUTUfHKzQzaQdZS-10" target="8NvbRjS3b2bipV3s16NQ-35">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="308" as="sourcePoint" />
+            <mxPoint x="410" y="327" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>

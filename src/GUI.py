@@ -274,7 +274,8 @@ class GUI:
         self.__btn_booking_btn1 = tk.Button(self.__window, text="Buchen", command=self.book_seats, width=10, height=2)
         self.__btn_booking_btn1.place(x=700, y=640)
 
-    def booking_pop_up(self, booking_id, cinema_title, selected_movie, selected_event, selected_seats):
+    @staticmethod
+    def booking_pop_up(booking_id, cinema_title, selected_movie, selected_event, selected_seats):
         # This method creates the booking summary which appears after pressing the button "Buchen" in the previous GUI
         # state
         message = (f"Buchungs-ID: {booking_id}\nAusgewähltes Kino: {cinema_title}\nAusgewählter Film: "

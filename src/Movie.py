@@ -13,6 +13,8 @@ class Movie:
         self.__selected_hall_id = None
 
     def __connect_db(self):
+        # This method creates the connection to the database
+        # Therefor the absolute path is determined to secure the connection is successful
         current_file_path = os.path.abspath(__file__)
         project_root = os.path.dirname(os.path.dirname(current_file_path))
         database_path = os.path.join(project_root, "src", "cinemadata.db")

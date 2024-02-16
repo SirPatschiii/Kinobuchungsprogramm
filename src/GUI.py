@@ -9,6 +9,8 @@ import tkinter.messagebox as tk_msg_box
 
 class GUI:
     def __init__(self, p_controller):
+        # This method does the initialisation for the GUI object
+        # It initializes the logging, all tkinter widgets and some variables which are needed for the logic objects
         self.__o_controller = p_controller
 
         if not log.root.handlers:
@@ -66,6 +68,8 @@ class GUI:
         self.__cinema_buttons = []
 
     def create_gui(self):
+        # This method creates the main GUI window and sets some settings for further program sequence
+        # It also starts the mainloop of tkinter
         self.__window.geometry("1000x700")
         self.__window.resizable(False, False)
         self.__window.title("Kinobuchungsprogramm")
@@ -73,6 +77,7 @@ class GUI:
         self.__window.mainloop()
 
     def update_gui(self):
+        # This method changes the GUI state if a user clicked a button.
         if self.__gui_status == "main":
             self.__update_gui_main_menu()
         elif self.__gui_status == "cinema":
@@ -87,19 +92,27 @@ class GUI:
             sys.exit(-1)
 
     def __update_gui_main_menu(self):
+        # This method is creating all components needed for the main menu and places them in the correct positions
         self.__clear_gui()
 
+        # This part creates the button to enter the program
         self.__btn_main_cinema = tk.Button(self.__window, text="Kinoauswahl",
                                            command=self.__o_controller.change_gui_cinema, width=40, height=10)
         self.__btn_main_cinema.place(x=340, y=260)
+
+        # This part creates the button to exit the program at any time
         self.__btn_exit = tk.Button(self.__window, text="Beenden", command=self.__o_controller.exit, width=10, height=2)
         self.__btn_exit.place(x=900, y=640)
+
+        # This part creates the button to make a step back at any time in the program
         self.__btn_back = tk.Button(self.__window, text="Zurück", command=self.__o_controller.back, width=10, height=2)
         self.__btn_back.place(x=800, y=640)
 
     def __update_gui_cinema_menu(self):
+        # This method is creating all components needed for the cinema menu and places them in the correct positions
         self.__clear_gui()
 
+        # This part creates the buttons for the available cinemas
         cinemas = self.__o_controller.get_all_cinemas()
         x_position = 335
         y_position = 165
@@ -112,8 +125,10 @@ class GUI:
             y_position += 180
 
     def __update_gui_movie_menu(self):
+        # This method is creating all components needed for the movie menu and places them in the correct positions
         self.__clear_gui()
 
+        # This part creates the numbers before the movie titles
         self.__lbl_movie_lab1 = tk.Label(self.__window, text="1", font=("Arial", 20), width=10, height=10)
         self.__lbl_movie_lab1.place(x=0, y=-50)
         self.__lbl_movie_lab2 = tk.Label(self.__window, text="2", font=("Arial", 20), width=10, height=10)
@@ -123,21 +138,23 @@ class GUI:
 
         self.movie_titles = self.__o_controller.get_movie_titles()
 
+        # This part creates the movie inside of buttons to give the user the opportunity to choose a movie
         self.__btn_movie_mov1 = tk.Button(self.__window, text=self.movie_titles[0], command=lambda
-                                        movie_title_lbl=self.movie_titles[0]: self.__o_controller.change_movie_event(
-                                        movie_title_lbl), width=50, height=5)
+                                          movie_title_lbl=self.movie_titles[0]: self.__o_controller.change_movie_event(
+                                          movie_title_lbl), width=50, height=5)
         self.__btn_movie_mov1.place(x=150, y=70)
         self.__btn_movie_mov2 = tk.Button(self.__window, text=self.movie_titles[1], command=lambda
-                                        movie_title_lbl=self.movie_titles[1]: self.__o_controller.change_movie_event(
-                                        movie_title_lbl), width=50, height=5)
+                                          movie_title_lbl=self.movie_titles[1]: self.__o_controller.change_movie_event(
+                                          movie_title_lbl), width=50, height=5)
         self.__btn_movie_mov2.place(x=150, y=290)
         self.__btn_movie_mov3 = tk.Button(self.__window, text=self.movie_titles[2], command=lambda
-                                        movie_title_lbl=self.movie_titles[2]: self.__o_controller.change_movie_event(
-                                        movie_title_lbl), width=50, height=5)
+                                          movie_title_lbl=self.movie_titles[2]: self.__o_controller.change_movie_event(
+                                          movie_title_lbl), width=50, height=5)
         self.__btn_movie_mov3.place(x=150, y=520)
 
         self.movie_descriptions = self.__o_controller.get_movie_description()
 
+        # These parts are creating the info boxes for the movies
         self.__fra_movie_fra1 = tk.Frame(self.__window, width=55, height=5)
         self.__fra_movie_fra1.place(x=550, y=70)
         self.__txt_movie_txt1 = tk.Text(self.__fra_movie_fra1, width=50, height=5)
@@ -172,13 +189,15 @@ class GUI:
         self.__txt_movie_txt3.config(state=tk.DISABLED)
 
     def __update_gui_event_menu(self):
+        # This method is creating all components needed for the event menu and places them in the correct positions
         self.__clear_gui()
 
         self.event_select = self.__o_controller.get_events()
         self.__o_controller.set_selected_event(self.event_select[0])
 
-        self.__lbl_event_lab1 = tk.Label(self.__window, text=self.__event_lab1_var, font=("Arial", 14), width=50, height=2,
-                                         anchor="w")
+        # This part creates the label and the radiobuttons for the event selection
+        self.__lbl_event_lab1 = tk.Label(self.__window, text=self.__event_lab1_var, font=("Arial", 14), width=50,
+                                         height=2, anchor="w")
         self.__lbl_event_lab1.place(x=80, y=60)
         self.__rad_event_rad1 = tk.Radiobutton(self.__window, text=self.event_select[0],
                                                value=self.event_select[0], font=("Arial", 12),
@@ -196,15 +215,19 @@ class GUI:
         self.__rad_event_rad1.place(x=150, y=150)
         self.__rad_event_rad2.place(x=150, y=200)
         self.__rad_event_rad3.place(x=150, y=250)
+
+        # This part creates the button to continue to the next GUI state
         self.__btn_event_btn1 = tk.Button(self.__window, text="Weiter",
                                           command=self.__o_controller.change_event_booking, width=10, height=2)
         self.__btn_event_btn1.place(x=700, y=640)
 
     def __update_gui_booking_menu(self):
+        # This method is creating all components needed for the booking menu and places them in the correct positions
         self.__clear_gui()
 
         self.__selected_seats = set()
 
+        # This part creates the labels in the booking menu which are displaying the chosen events in the previous steps
         self.__lbl_booking_lab1 = tk.Label(self.__window, text=self.__o_controller.get_selected_movie(),
                                            font=("Arial", 14), width=50, height=2, anchor="w")
         self.__lbl_booking_lab1.place(x=80, y=60)
@@ -215,6 +238,7 @@ class GUI:
                                            font=("Arial", 14), width=20, height=2, anchor="e")
         self.__lbl_booking_lab3.place(x=680, y=60)
 
+        # This part creates all the buttons which are representing the seats in the cinema
         total_seats_tuple = self.__o_controller.get_total_seats()
         total_seats = total_seats_tuple[0]
 
@@ -223,7 +247,7 @@ class GUI:
         rows = 5
         cols = total_seats // rows
 
-        # Festlegen der Anfangsposition des ersten Buttons
+        # Defining the starting position of the first button
         start_x = 300
         start_y = 300
         button_width = 60
@@ -231,7 +255,7 @@ class GUI:
         padding_x = 15
         padding_y = 15
 
-    # Erstellen Sie eine Schleife, um Buttons für jeden Sitzplatz zu erstellen und sie zu platzieren
+        # This loop creates the button and places them in the correct spot
         for row in range(rows):
             for col in range(cols):
                 seat_number = row * cols + col + 1
@@ -246,18 +270,21 @@ class GUI:
                     button.config(state="disabled")
                 self.__btn_booking_btn_list.append(button)
 
+        # This part creates the "Buchen" button which is responsible for completing the booking step
         self.__btn_booking_btn1 = tk.Button(self.__window, text="Buchen", command=self.book_seats, width=10, height=2)
         self.__btn_booking_btn1.place(x=700, y=640)
 
     def booking_pop_up(self, booking_id, cinema_title, selected_movie, selected_event, selected_seats):
+        # This method creates the booking summary which appears after pressing the button "Buchen" in the previous GUI
+        # state
         message = (f"Buchungs-ID: {booking_id}\nAusgewähltes Kino: {cinema_title}\nAusgewählter Film: "
                    f"{selected_movie}\nAusgewähltes Event: {selected_event}\nAusgewählte Sitze: {selected_seats}")
         tk_msg_box.showinfo("Buchungszusammenfassung", message)
 
     def __clear_gui(self):
         # This method hides all elements on the current GUI to ensure only the correct widgets for the current
-        # GUI state get displayed
-
+        # GUI state are getting displayed.
+        # Furthermore, this method does some logging for error prevention.
         try:
             self.__btn_main_cinema.place_forget()
 
@@ -309,6 +336,7 @@ class GUI:
                 log.exception(f"Error while destroying widgets: {e}")
 
     def book_seats(self):
+        # TODO aber hier nach unten bitte die Kommentierung noch prüfen/ergänzen. Danach TODO entfernen, danke.
         seat_list = self.get_seat_list()
         selected_seats = self.get_selected_seats()
         self.__o_controller.book_seats(seat_list, selected_seats)
@@ -320,12 +348,15 @@ class GUI:
         self.__o_controller.change_cinema_movie()
 
     def get_gui_status(self):
+        # This getter returns the value of gui_status
         return self.__gui_status
 
     def get_booked_seats(self):
+        # This getter returns the value of booked_seats
         return self.__booked_seats
 
     def get_seat_list(self):
+        # This getter returns the value of seat_list
         seat_list = []
         for button in self.__btn_booking_btn_list:
             if button.cget('bg') == 'red':
@@ -335,23 +366,28 @@ class GUI:
         return ''.join(seat_list)
 
     def get_selected_seats(self):
+        # This getter returns the value of selected_seats
         return self.__selected_seats
 
     def set_gui_status(self, p_gui_status):
+        # This setter sets a value for gui_status
         self.__gui_status = p_gui_status
         return
 
     def set_event_lab1_var(self, p_event_lbl1_var):
+        # This setter sets a value for event_lab1_var
         self.__event_lab1_var = p_event_lbl1_var
         return
 
     def set_booked_seats(self, booked_seats):
+        # This setter sets the values for the buttons which are already booked
         for button in self.__btn_booking_btn_list:
             seat_number = int(button.cget('text'))
             color = booked_seats[seat_number - 1]  # Get color from booked seats list
             button.config(bg=color)
 
     def set_seats_clicked(self, seat_number):
+        # This setter sets the borders for the selected seats
         if seat_number in self.__selected_seats:
             # If seat is already selected, deselect it
             self.__selected_seats.remove(seat_number)

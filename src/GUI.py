@@ -117,6 +117,7 @@ class GUI:
         x_position = 335
         y_position = 165
         for hall_id, cinema_title in cinemas:
+            # every button give his cinema_title and hall_id on the selection to the method select_cinema
             btn_cinema = tk.Button(self.__window, text=cinema_title,
                                    command=lambda hid=hall_id, title=cinema_title: self.select_cinema(hid, title),
                                    width=40, height=10)
@@ -192,13 +193,18 @@ class GUI:
         # This method is creating all components needed for the event menu and places them in the correct positions
         self.__clear_gui()
 
+        # get the events from the controller
         self.event_select = self.__o_controller.get_events()
+
+        # set the selected event - default is the 1st event
         self.__o_controller.set_selected_event(self.event_select[0])
 
         # This part creates the label and the radiobuttons for the event selection
         self.__lbl_event_lab1 = tk.Label(self.__window, text=self.__event_lab1_var, font=("Arial", 14), width=50,
                                          height=2, anchor="w")
         self.__lbl_event_lab1.place(x=80, y=60)
+
+        # the radiobuttons gives the selection to the controller
         self.__rad_event_rad1 = tk.Radiobutton(self.__window, text=self.event_select[0],
                                                value=self.event_select[0], font=("Arial", 12),
                                                command=lambda: self.__o_controller.set_selected_event(
@@ -262,6 +268,8 @@ class GUI:
                 button_x = start_x + col * (button_width + padding_x)
                 button_y = start_y + row * (button_height + padding_y)
                 color = booked_seats[seat_number - 1]
+
+                # every button gives his number to the set_seats_clicked, if they selected
                 button = tk.Button(self.__window, text=str(seat_number),
                                    command=lambda num=seat_number: self.set_seats_clicked(num),
                                    width=5, height=2, bg=color)
@@ -337,12 +345,13 @@ class GUI:
                 log.exception(f"Error while destroying widgets: {e}")
 
     def book_seats(self):
-        # TODO aber hier nach unten bitte die Kommentierung noch prüfen/ergänzen. Danach TODO entfernen, danke.
+        # get the selected seats from the Button btn_booking_btn1 and give it to the controller
         seat_list = self.get_seat_list()
         selected_seats = self.get_selected_seats()
         self.__o_controller.book_seats(seat_list, selected_seats)
 
     def select_cinema(self, hall_id, cinema_title):
+        # get the cinema_title and hall_id from the selected cinema button and give it to the controller
         self.__selected_cinema_title = cinema_title
         self.__selected_hall_id = hall_id
         self.__o_controller.set_selected_cinema(cinema_title, hall_id)

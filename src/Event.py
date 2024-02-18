@@ -30,6 +30,7 @@ class Event:
         self.__cursor_db = self.__connect.cursor()
 
     def __disconnect_db(self):
+        # close the connection from the database
         try:
             self.__connect.close()
             log.debug("Disconnect from the database was successful!")
@@ -39,18 +40,23 @@ class Event:
             log.exception(f"Database error: {e}")
 
     def set_selected_cinema(self, hall_id):
+        # get the hall_id from the controller
         self.__selected_hall_id = hall_id
 
     def get_selected_cinema(self):
+        # output the selected_hall_od from set_selected_cinema
         return self.__selected_hall_id
 
     def set_selected_movie(self, movie_title_lbl):
+        # get the movie_title from the controller
         self.__selected_movie = movie_title_lbl
 
     def get_selected_movie(self):
+        # output the selected_movie from set_selected_movie
         return self.__selected_movie
 
     def get_event_title(self):
+        # call event and movie name with the movie_id from the database
         self.__connect_db()
         hall_id = self.__selected_hall_id
         movie = self.__selected_movie

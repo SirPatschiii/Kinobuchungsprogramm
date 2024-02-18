@@ -78,7 +78,8 @@ class Controller:
         sys.exit(1)
 
     def book_seats(self, seat_list, selected_seats):
-        # TODO aber hier nach unten bitte die Kommentierung noch prüfen/ergänzen. Danach TODO entfernen, danke.
+        # give the complete list of booked_seats and the individually selected seats to the booking class
+        # get the selected data from the booking class and give it to the gui to the booking summery
         self.__o_booking.set_booked_seats(seat_list)
         self.__o_booking.set_selected_seats(selected_seats)
         self.change_booking_main()

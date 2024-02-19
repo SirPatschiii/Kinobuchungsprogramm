@@ -233,7 +233,15 @@ class Controller:
 ## ÜBERGREIFENDE HANDLUNGSKOMPETENZ (30 Punkte)
 
 # Die Studierenden können eigenständig Problemstellungen der Praxis analysieren und zu deren Lösung Programme entwerfen (30)
+- Sitzplatzauswahl
+- stati der GUI, widgets aufräumen
+- MVC - unabhängiges Arbeiten, dennoch ein Gesamtes
 <!-- Which parts of your project are you proud of and why (describe, analyse, link) -->
+- keine großen Probleme
+- vorhandene Bugs wurden gemeinsam beseitigt, durch debugging
+- schneller Einstieg ins Projekt
+- zügige Planung und Umsetzung
+- fehlendes Wissen gemeinsam aufgearbeitet
 <!-- Where were the problems with your implementation, timeline, functionality, team management (describe, analyse, reflect from past to future, link if relevant) -->
 
 

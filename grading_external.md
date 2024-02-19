@@ -8,33 +8,121 @@ Alle Kriterien betreffen nur die Projektarbeit. Beweismaterial kommt aus dem Gru
 ## FACHKOMPETENZ (40 Punkte)
 
 # Die Studierenden kennen die Grundelemente der prozeduralen Programmierung. (10)
-<!-- Siehe Kenntnisse in prozeduraler Programmierung: zutreffendes wählen und beweisen-->
+Das Projekt wurde in unterschiedliche Dateien/Klassen aufgeteilt. Diese wiederum haben verschiedene Methoden, welche
+unterschiedliche Zwecke erfüllen. Damit wurde ein Gesamtproblem in viele kleine Teilprobleme unterteilt und die
+prozedurale Programmierung wurde umgesetzt.
 
 # Sie können die Syntax und Semantik von Python (10)
-<!-- Eine Stelle aus ihrem Programmieren wählen auf die sie besonders stolz sind und begründen -->
+Hier haben wir einige Verbesserungsvorschläge anzumelden.
 
+Zunächst wurde eine objektorientierte Programmierung angestrebt, was positiv hervorzuheben ist. Hierbei sollte jedoch
+auch auf einen konsequenten Stil geachtet werden.
+```python
+class Forumseite:
+    def __init__(self):
+        self.root = tk.Tk()
+        self.root.title("Forumseite")
+
+        # Button erstellen
+        self.hinzufuegen_button = tk.Button(self.root, text="Hinzufügen", command=self.hinzufuegen)
+        self.hinzufuegen_button.pack()
+```
+Hier wurde Beispielsweise ein schöner Konstruktor für eine Klasse erstellt während hier ...
+```python
+#Fenster "Titelseite" erstellen
+forumseite =  Tk()
+(forumseite.title('Wilkommen im Karteikartensystem'))
+
+# Ikon hinzufügen (auskommentiert)
+forumseite.iconbitmap("hand-page01.ico")
+```
+leider die Klasse (Forumseite.py) im Nichts beginnt.
+
+Des Weiteren sollte man auf ungenutzte Import-Statements achten und auf diese verzichten. Diese werden grau von der IDE
+unterlegt und "fressen" lediglich Leistung beim Programmablauf.
+```python
+import tkinter as tk # unused
+from tkinter import messagebox # unused
+import sys # unused
+import time
+import subprocess
+```
+
+Positiv hervorzuheben gilt der, trotz dessen, lesbare Code. Die Variablen sind sprechend formuliert und der Code wurde
+schön kommentiert. Dies hilft beim Verständnis der Gedankengänge ungemein.
+```python
+#Button Einführung
+EinfuehrungButton = Button(forumseite, text='Einführung', bg='darkgrey', fg='white', height=10, width=35,font = myFont, command = ClickEinfuehrung).grid(row=1, column=1)
+
+#Button Lernen
+LernenButton = Button(forumseite, text='Lernen', bg='darkgrey', fg='white', height=10, width=35,font = myFont, command = ClickLernen ).grid(row=2, column=1)
+
+#Button Hinzufügen
+HinzufuegenButton = Button(forumseite, text='Hinzufügen', bg='darkgrey', fg='white', height=10, width=35,font = myFont, command= ClickHinzufuegen ).grid(row=1, column=2)
+
+#Button Beenden
+BeendenButton = Button(forumseite, text='Beenden', bg='darkgrey', fg='white', height=10, width=35,font = myFont, command= Beenden).grid(row=2, column=2)
+```
 
 # Sie können ein größeres Programm selbständig entwerfen, programmieren und auf Funktionsfähigkeit testen (Das Projekt im Team) (10)
-<!-- Anhand von commits zeigen, wie jeder im Projekt einen Beitrag geleistet hat -->
+Die Zusammenarbeit ist als unbeteiligte Person schwer einzuschätzen, anhand der Commits würde man darauf schließen,
+dass es ein Ein-Mann-Projekt ist, was jedoch nicht unbedingt repräsentativ sein muss.
 
+Ansonsten ist die Funktionsfähigkeit generell gegeben, die Fehlermeldung bei Programmstart könnte jedoch noch behoben
+werden.
 
 # Sie kennen verschiedene Datenstrukturen und können diese exemplarisch anwenden. (10)
-<!-- Eine Stelle aus dem Projekt wählen auf die sie besonders stolz sind und begründen -->
+Das Projekt sieht verschiedene Datenstrukturen vor. Zunächst gilt hier das Modul Tkinter hervorzuheben. Dieses wurde
+ausgiebig genutzt, um die gesamte GUI aufzubauen.
+```python
+    self.root = tk.Tk()
+    self.root.title("Forumseite")
 
+    # Button erstellen
+    self.hinzufuegen_button = tk.Button(self.root, text="Hinzufügen", command=self.hinzufuegen)
+    self.hinzufuegen_button.pack()
+```
+
+Des Weiteren wurde auch eine externe Datei eingebunden was auch positiv zu erwähnen ist.
+```python
+    with open("Datenbank.txt", "w") as file:
+        for key in text_dict.keys():
+            if key and text_dict[key]:
+                file.write(f"{key}{text_dict[key]}")
+```
+
+Auch ein Errorhandler ist zu erwähnen.
+```python
+    try:
+        # Start Titelseite.py
+        titelseite_process = subprocess.Popen(["python", "Titelseite.py"])
+
+        # Wait for 3 seconds
+        time.sleep(3)
+
+        # Close Titelseite.py
+        titelseite_process.terminate()
+
+        # Open Forumseite.py
+        subprocess.Popen(["python", "Forumseite.py"])
+
+    except FileNotFoundError:
+        print("Error: Make sure Titelseite.py and Forumseite.py exist in the same directory.")
+```
+
+Hinzu kommen dann noch For-Schleifen und If-Verzweigungen.
+```python
+    for key in text_dict.keys():
+        if key and text_dict[key]:
+            file.write(f"{key}{text_dict[key]}")
+```
 
 
 ## METHODENKOMPETENZ (10 Punkte)
 
 # Die Studierenden können eine Entwicklungsumgebung verwenden um Programme zu erstellen (10)
-<!-- Beweise anbringen für Nutzen folgender Tools (können links, screenshots und screnncasts sein) -->
-
-<!-- zB -->
-<!-- GIT -->
-<!-- VSC -->
-<!-- Copilot -->
-<!-- other -->
-
-
+Zu den verwendeten Tools gibt es für uns offensichtlich nur 
+[GitHub](https://github.com/ArthurFleck35x/Karteikartensystem). Weitere Tools können nicht identifiziert werden.
 
 ## PERSONALE UND SOZIALE KOMPETENZ (20 Punkte)
 

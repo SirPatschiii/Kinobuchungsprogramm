@@ -127,12 +127,20 @@ Zu den verwendeten Tools gibt es für uns offensichtlich nur
 ## PERSONALE UND SOZIALE KOMPETENZ (20 Punkte)
 
 # Die Studierenden können ihre Software erläutern und begründen. (5)
-<!-- Jeder in der Gruppe: You have helped someone else and taught something to a fellow student (get a support message from one person) -->
+Wir können dies nur anhand der Kommentare im Code beurteilen. 
+Diese sind vorhanden und größtenteils verständlich. 
+Es dürfen jedoch bei manchen Codeabschnitten mehr Kommentare und vorhandene dürfen ausführlicher sein.
+```python
+# Hintergrundfarbe von "Hinzufügen" auf oliv setzen
+titelseite.configure(bg='olive')
+```
+dies sieht man nur im Vollbildmodus des Fensters.
 
 # Sie können existierenden Code analysieren und beurteilen. (5)
 <!-- Pro Gruppe:You have critiqued another group project. Link to your critique here (another wiki page on your git) and link the project in the critique, use these evaluation criteria to critique the other project. Make sure they get a top grade after making the suggested changes -->
 
 # Sie können sich selbstständig in Entwicklungsumgebungen und Technologien einarbeiten und diese zur Programmierung und Fehlerbehebung einsetzen. (10)
+Laut dem Code wurde tkinter verwendet und mit Files gearbeitet.
 <!-- Which technology did you learn outside of the teacher given input -->
 <!-- Did you or your group get help from someone in the classroom (get a support message here from the person who helped you) -->
 
@@ -141,9 +149,7 @@ Zu den verwendeten Tools gibt es für uns offensichtlich nur
 ## ÜBERGREIFENDE HANDLUNGSKOMPETENZ (30 Punkte)
 
 # Die Studierenden können eigenständig Problemstellungen der Praxis analysieren und zu deren Lösung Programme entwerfen (30)
-<!-- Which parts of your project are you proud of and why (describe, analyse, link) -->
-<!-- Where were the problems with your implementation, timeline, functionality, team management (describe, analyse, reflect from past to future, link if relevant) -->
-
+Dann nicht beurteilt werden, da uns hier weitere Informationen von der Gruppe fehlt.
 
 
 ## Kenntnisse in prozeduraler Programmierung:

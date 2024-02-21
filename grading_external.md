@@ -75,46 +75,46 @@ werden.
 Das Projekt sieht verschiedene Datenstrukturen vor. Zunächst gilt hier das Modul Tkinter hervorzuheben. Dieses wurde
 ausgiebig genutzt, um die gesamte GUI aufzubauen.
 ```python
-    self.root = tk.Tk()
-    self.root.title("Forumseite")
+self.root = tk.Tk()
+self.root.title("Forumseite")
 
-    # Button erstellen
-    self.hinzufuegen_button = tk.Button(self.root, text="Hinzufügen", command=self.hinzufuegen)
-    self.hinzufuegen_button.pack()
+# Button erstellen
+self.hinzufuegen_button = tk.Button(self.root, text="Hinzufügen", command=self.hinzufuegen)
+self.hinzufuegen_button.pack()
 ```
 
 Des Weiteren wurde auch eine externe Datei eingebunden was auch positiv zu erwähnen ist.
 ```python
-    with open("Datenbank.txt", "w") as file:
-        for key in text_dict.keys():
-            if key and text_dict[key]:
-                file.write(f"{key}{text_dict[key]}")
+with open("Datenbank.txt", "w") as file:
+    for key in text_dict.keys():
+        if key and text_dict[key]:
+            file.write(f"{key}{text_dict[key]}")
 ```
 
 Auch ein Errorhandler ist zu erwähnen.
 ```python
-    try:
-        # Start Titelseite.py
-        titelseite_process = subprocess.Popen(["python", "Titelseite.py"])
+try:
+    # Start Titelseite.py
+    titelseite_process = subprocess.Popen(["python", "Titelseite.py"])
 
-        # Wait for 3 seconds
-        time.sleep(3)
+    # Wait for 3 seconds
+    time.sleep(3)
 
-        # Close Titelseite.py
-        titelseite_process.terminate()
+    # Close Titelseite.py
+    titelseite_process.terminate()
 
-        # Open Forumseite.py
-        subprocess.Popen(["python", "Forumseite.py"])
+    # Open Forumseite.py
+    subprocess.Popen(["python", "Forumseite.py"])
 
-    except FileNotFoundError:
-        print("Error: Make sure Titelseite.py and Forumseite.py exist in the same directory.")
+except FileNotFoundError:
+    print("Error: Make sure Titelseite.py and Forumseite.py exist in the same directory.")
 ```
 
 Hinzu kommen dann noch For-Schleifen und If-Verzweigungen.
 ```python
-    for key in text_dict.keys():
-        if key and text_dict[key]:
-            file.write(f"{key}{text_dict[key]}")
+for key in text_dict.keys():
+    if key and text_dict[key]:
+        file.write(f"{key}{text_dict[key]}")
 ```
 
 
@@ -127,47 +127,143 @@ Zu den verwendeten Tools gibt es für uns offensichtlich nur
 ## PERSONALE UND SOZIALE KOMPETENZ (20 Punkte)
 
 # Die Studierenden können ihre Software erläutern und begründen. (5)
-Wir können dies nur anhand der Kommentare im Code beurteilen. 
-Diese sind vorhanden und größtenteils verständlich. 
-Es dürfen jedoch bei manchen Codeabschnitten mehr Kommentare und vorhandene dürfen ausführlicher sein.
+Wir können dies nur anhand der Kommentare im Code beurteilen. Diese sind vorhanden und größtenteils verständlich.
+
+An manchen Stellen im Code dürften es jedoch auch noch ein paar mehr, bzw. ausführlichere Kommentare sein.
 ```python
 # Hintergrundfarbe von "Hinzufügen" auf oliv setzen
 titelseite.configure(bg='olive')
 ```
-dies sieht man nur im Vollbildmodus des Fensters.
+Dieses Statement wirkt zum Beispiel nur, wenn das Fenster in der Größe verändert wird und das Label nicht mehr den
+kompletten Bildschirm belegt. Dies ist auf den ersten Blick nicht ersichtlich.
 
 # Sie können existierenden Code analysieren und beurteilen. (5)
-<!-- Pro Gruppe:You have critiqued another group project. Link to your critique here (another wiki page on your git) and link the project in the critique, use these evaluation criteria to critique the other project. Make sure they get a top grade after making the suggested changes -->
+Diese "grading criteria" ist für die Gruppe des Karteikartensystems entstanden. 
+
+Link zum Projekt [hier](https://github.com/ArthurFleck35x/Karteikartensystem).
 
 # Sie können sich selbstständig in Entwicklungsumgebungen und Technologien einarbeiten und diese zur Programmierung und Fehlerbehebung einsetzen. (10)
-Laut dem Code wurde tkinter verwendet und mit Files gearbeitet.
-<!-- Which technology did you learn outside of the teacher given input -->
-<!-- Did you or your group get help from someone in the classroom (get a support message here from the person who helped you) -->
+Anhand des Codes ist ersichtlich, dass mit dem Modul Tkinter gearbeitet wurde. Dieses wurde in den Vorlesungen 
+nicht behandelt und lässt folglich darauf schließen, dass die Inhalte eigenständig erarbeitet wurden.
+```python
+import tkinter as tk
+```
 
-
+Des Weiteren wurden auch externe Dateien eingebunden und zur Zwischenspeicherung verwendet.
+```python
+def lade_fragen_antworten():
+    try:
+        with open("datenbank.txt", "r", encoding="utf-8") as file:
+            fragen_antworten = [line.strip() for line in file.readlines()]
+        return fragen_antworten
+    except FileNotFoundError:
+        print("Datei 'datenbank.txt' nicht gefunden.")
+        return []
+```
 
 ## ÜBERGREIFENDE HANDLUNGSKOMPETENZ (30 Punkte)
 
 # Die Studierenden können eigenständig Problemstellungen der Praxis analysieren und zu deren Lösung Programme entwerfen (30)
-Dann nicht beurteilt werden, da uns hier weitere Informationen von der Gruppe fehlt.
+Die Aufgabe ein Karteikartensystem von Grund auf zu erstellen ist durchaus eine komplexe Problemstellung.
+In diesem Projekt sieht man, dass sich im Vorfeld Gedanken gemacht wurden wie das Problem unterteilt werden kann, damit
+es "bearbeitbar" wird und man einen Anfang findet. Die Struktur des Projektes lässt auf eine schrittweise Bearbeitung
+schließen, was der prozeduralen Programmierung entspricht und sicherlich sinnvoll für solch ein Projekt ist. Dadurch
+wird das Gesamtproblem greifbar gemacht und auch die Teamarbeit wird ermöglicht.
 
 
 ## Kenntnisse in prozeduraler Programmierung:
 
 # - Algorithmenbeschreibung
+Hier zu sehen ist eine kurze Beschreibung was diese Methode / dieser Algorithmus erledigt.
+```python
+def execute_titelseite():
+    """
+    Führt Titelseite.py für 3 Sekunden aus und öffnet Forumseite.py.
+    """
+```
 
 # - Datentypen
+Das Projekt beinhaltet verschiedene Datentypen. Es wurde mit Objekten von Tkinter gearbeitet, ...
+```python
+self.master.iconbitmap("hand-page01.ico")
+
+self.frage_text = tk.Label(master, text=self.frage_antwort_liste[self.aktuelle_frage_index], height=5, width=30, bg='darkgrey', fg='white', borderwidth=2, relief="sunken")
+
+self.antwort_button = tk.Button(master, text="Antwort", bg='darkgrey', fg='white', height=2, width=25,font = self.myFont, command=self.zeige_antwort)
+```
+
+es wurde mit Schriftarten gearbeitet, ...
+```python
+myFont = font.Font(size=50, weight="bold", family="Helvetica")
+```
+
+es wurde mit Strings gearbeitet, ...
+```python
+text = "Im Forum findest du alles was du zum Lernen brauchst."
+```
+
+und auch mit Indexen, sprich Integers, ...
+```python
+antwort_index = self.aktuelle_frage_index + 1
+```
+
+und vielem mehr.
 
 # - E/A-Operationen und Dateiverarbeitung
+E/A-Operationen werden verwendet, um Daten zwischenzuspeichern.
+```python
+def speichern():
+    with open("Datenbank.txt", "w") as file:
+        for key in text_dict.keys():
+            if key and text_dict[key]:
+                file.write(f"{key}{text_dict[key]}")
+```
 
 # - Operatoren
+Das Projekt beinhaltet Vergleichsoperatoren, ...
+```python
+if antwort_index < len(self.frage_antwort_liste):
+```
+
+sowie Rechenoperatoren.
+```python
+self.aktuelle_frage_index += 2
+```
 
 # - Kontrollstrukturen
+Als Kontrollstrukturen wurden sowohl If-Verzweigungen, ...
+```python
+if antwort_index < len(self.frage_antwort_liste):
+```
+
+als auch Schleifen verwendet.
+```python
+fragen_antworten = [line.strip() for line in file.readlines()]
+```
 
 # - Funktionen
+Das Projekt sieht viele Methoden und Funktionen vor. Hier ein Beispiel:
+```python
+def ClickForum():
+    # Hier öffnen wir die "einführung.py" Datei mit subprocess
+    subprocess.Popen(["python", "Forumseite.py"])
+    speichern()
+    master.destroy()
+```
 
-# - Stringverarbeitung
+# - String-Verarbeitung
+Im Projekt werden zum Beispiel die Fragen als Strings verarbeitet und dann zwischengespeichert.
+```python
+def speichereDieKarte():
+    text_key = entry_frage .get("1.0", tkinter.END)
+    text_value = entry_antwort.get("1.0", tkinter.END)
+    text_dict[text_key] = text_value
+    entry_antwort.delete(1.0, tkinter.END)
+    entry_frage.delete(1.0, tkinter.END)
+```
 
 # - Strukturierte Datentypen
-
-
+Strukturierte Datentypen werden hier auch zur Speicherung von Fragen verwendet.
+```python
+text_dict = {}
+```

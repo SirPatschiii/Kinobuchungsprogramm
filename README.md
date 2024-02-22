@@ -1,11 +1,12 @@
 # Kinobuchungsprogramm
 
-This repository contains a cinema booking program that was created as part of a project in the Programming 1 course. 
-The creators are grilldb97 and SirPatschiii.
+Dieses Repository enthält ein Kinobuchungsprogramm, das als Teil eines Projekts im Kurs Programmierung 1 erstellt wurde. 
+Die Ersteller sind grilldb97 und SirPatschiii.
 
-The project was realised with Python, including Tkinter, and has an object-oriented structure. The project was 
-supported with a model-view-controller architecture. In addition, a database was integrated, which was realised 
-with SQLite3.
+Das Projekt wurde mit Python, einschließlich Tkinter, realisiert und hat eine objektorientierte Struktur. Das Projekt 
+wurde auf einer Model-View-Controller-Architektur aufgebaut. Darüber hinaus wurde eine Datenbank integriert, die mit 
+SQLite3 realisiert wurde.
 
-The functions consist of a cinema selection, followed by a film selection including date and time. Finally, it is
-possible to book one or more seats and finalise the booking with a summary.
+Die Funktionen bestehen aus einer Kinoauswahl, gefolgt von einer Filmauswahl inklusive Datum und Uhrzeit. Abschließend
+gibt es die Möglichkeit, einen oder mehrere Sitzplätze zu buchen und die Buchung mit einer Zusammenfassung 
+abzuschließen.
